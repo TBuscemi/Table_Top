@@ -1,6 +1,7 @@
 import './App.css';
 import React from 'react';
 import Site from './components/navSites/Site';
+import Footer from './components/footer/Footer';
 
 
 
@@ -8,8 +9,13 @@ function App() {
 
 
   return (
-    <div>
+    <div className="App" style={{
+      backgroundColor: 'darkgreen',
+      backgroundSize: 'cover',
+      height: '100vh'
+    }}>
       <Site/>
+      <Footer/>
     </div>
   );
 }

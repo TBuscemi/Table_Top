@@ -22,9 +22,9 @@ const NotLoggedIn = ({role, setRole}) => {
                    <Nav.Item><Nav.Link href="/register">Register</Nav.Link></Nav.Item>
                 </Nav>
             </Navbar>
-                    <Switch>
-                    <Route path='/register'  exact component={Register}></Route>
-                </Switch>
+            <Switch>
+                <Route path='/register'  exact component={Register}></Route>
+            </Switch>
         </Router> 
             
         </div>
