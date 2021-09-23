@@ -1,0 +1,48 @@
+#bigCenterText{
+    color: aliceblue;
+    font-variant: small-caps;
+    font-size: 545;
+    text-align: center;
+}
+
+.navbar a:hover {
+    background-color: rgb(104, 9, 0);
+}
+
+.system{
+    color: aliceblue;
+    text-align: center;
+    font-size: 19px;
+}
+
+.length{
+    color: aliceblue;
+    text-align: center;
+    font-size: 19px;
+}
+
+.player{
+    color: aliceblue;
+    text-align: center;
+    font-size: 19px;
+}
+
+.gm{
+    color: aliceblue;
+    text-align:center;
+    font-size: 19px;
+}
+
+.platform{
+    color: aliceblue;
+    text-align: center;
+    font-size: 19px;
+}
+
+.left{
+    text-align: left;
+}
+
+.right{
+    text-align: right;
+}
