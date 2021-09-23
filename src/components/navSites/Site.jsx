@@ -1,11 +1,12 @@
 import { useState } from 'react';
 import NotLoggedIn from './sites/NotLoggedIn';
-// import LoggedIn from '.site/LoggedIn'
+import LoggedIn from './sites/LoggedIn';
 
 
 const Site = () => {
 
-    const [role, setRole]= useState('notLoggedIn');
+    const [role, setRole]= useState('loggedIn');
+    const [user, setUser]= useState('');
     
 
     function RenderSite(){
@@ -13,7 +14,15 @@ const Site = () => {
             console.log('notLoggedIn!');
             return (
                 <div id='nlDiv'>
-                    <NotLoggedIn role={role} setRole={setRole} />
+                    <NotLoggedIn user={user} setUser={setUser} role={role} setRole={setRole} />
+                </div>
+            );
+        }
+        else{
+            console.log('loggedIn');
+            return (
+                <div>
+                    <LoggedIn role={role} setRole={setRole} user={user} setUser={setUser} />
                 </div>
             );
         }

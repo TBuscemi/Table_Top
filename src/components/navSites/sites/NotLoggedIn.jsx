@@ -11,7 +11,7 @@ import Register from '../../register/Register';
 import './NotLoggedIn.css'
 
 
-const NotLoggedIn = ({role, setRole}) => {
+const NotLoggedIn = ({role, setRole, user, setUser}) => {
 
     
     return (
@@ -28,8 +28,7 @@ const NotLoggedIn = ({role, setRole}) => {
             <Switch>
                 <Route path='/register'  exact component={Register}></Route>
                 <Route path='/' exact component={Home}></Route>
-                <Route path='/login'  exact component={Login}></Route>
-
+                <Route path='/login' element={<Login role = {role} user={user}  />}/>
             </Switch>
         </Router> 
             
