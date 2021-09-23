@@ -4,14 +4,14 @@ import NotLoggedIn from './sites/NotLoggedIn';
 
 const Site = () => {
 
-    const [role, setRole]= useState('NotLoggedIn');
+    const [role, setRole]= useState('notLoggedIn');
     
-    
+
     function RenderSite(){
         if(role === 'notLoggedIn'){
             console.log('notLoggedIn!');
             return (
-                <div>
+                <div id='nlDiv'>
                     <NotLoggedIn role={role} setRole={setRole} />
                 </div>
             );
