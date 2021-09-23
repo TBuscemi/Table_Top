@@ -7,7 +7,7 @@ const Home = () => {
     return (
         <div >
             <div>
-                <h1 id="bigCenterText" class="text-center">Looking For Fellow Adventurers?!</h1>
+                <h1 class="textCenter">Looking For Fellow Adventurers?!</h1>
             </div>
                 
                 <div class="platform row">

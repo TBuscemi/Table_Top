@@ -1,7 +1,6 @@
-#bigCenterText{
+.textCenter{
     color: aliceblue;
-    font-variant: small-caps;
-    font-size: 545;
+    font-size: 54;
     text-align: center;
 }
 
@@ -46,3 +45,5 @@
 .right{
     text-align: right;
 }
+
+
