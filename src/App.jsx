@@ -1,6 +1,9 @@
 import './App.css';
 import React from 'react';
-import Site from './navSites/Site';
+import Site from './components/navSites/Site';
+
+
+
 function App() {
 
 
