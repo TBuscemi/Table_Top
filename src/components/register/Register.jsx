@@ -1,6 +1,8 @@
 import axios from 'axios';
 import React, { Component } from 'react';
-import "./Register.css"
+import "./Register.css";
+import Button from 'react-bootstrap/button';
+
 
 
 class Register extends React.Component {
@@ -62,7 +64,7 @@ class Register extends React.Component {
                     <label for="last_name">Last Name: </label>
                     <input type="text" name="last_name" onChange={(event) => this.handleChange(event)} value={this.state.last_name}/><br></br>
 
-                    <button type="submit">Add User</button>
+                    <Button variant='info' block size="md" type="submit">Register!</Button>
                 </form>
             </div>
         )

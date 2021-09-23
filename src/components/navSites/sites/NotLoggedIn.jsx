@@ -6,6 +6,7 @@ import {
     Link
   }from "react-router-dom";
 import Home from '../../home/Home';
+import Login from '../../login/Login';
 import Register from '../../register/Register';
 import './NotLoggedIn.css'
 
@@ -27,6 +28,8 @@ const NotLoggedIn = ({role, setRole}) => {
             <Switch>
                 <Route path='/register'  exact component={Register}></Route>
                 <Route path='/' exact component={Home}></Route>
+                <Route path='/login'  exact component={Login}></Route>
+
             </Switch>
         </Router> 
             
