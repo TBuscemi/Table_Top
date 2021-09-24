@@ -1,7 +1,7 @@
 import './App.css';
 import React from 'react';
 import Site from './components/navSites/Site';
-import Footer from './components/footer/Footer';
+// import Footer from './components/footer/Footer';
 
 
 
@@ -16,7 +16,7 @@ function App() {
       height: '100vh'
     }}>
       <Site/>
-      <Footer/>
+      {/* <Footer/> */}
     </div>
   );
 }
