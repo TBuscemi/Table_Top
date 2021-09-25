@@ -1,34 +1,50 @@
-import { useState } from 'react';
+import { Component } from 'react';
 import NotLoggedIn from './sites/NotLoggedIn';
 import LoggedIn from './sites/LoggedIn';
 
 
-const Site = () => {
+class Site extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            user:[],
+            role:''
+  
+        }
+    }
 
-    const [role, setRole]= useState('loggedIn');
-    const [user, setUser]= useState('');
-    
-
-    function RenderSite(){
-        if(role === 'notLoggedIn'){
+    renderSite(props){
+        if(this.props.user.user_id === undefined){
             console.log('notLoggedIn!');
+            console.log("test1 "+this.props.user.user_id);
+            console.log(props.user)
+           ;
+            ;
+        
             return (
                 <div id='nlDiv'>
-                    <NotLoggedIn user={user} setUser={setUser} role={role} setRole={setRole} />
+                    <NotLoggedIn user={this.props.user.user_id} role={this.role} />
                 </div>
             );
         }
         else{
-            console.log('loggedIn');
+            console.log('LoggedIn');
+            console.log(+this.props.user.user_id);
             return (
                 <div>
-                    <LoggedIn role={role} setRole={setRole} user={user} setUser={setUser} />
+                    <LoggedIn user={this.state.user} role={this.role}/>
                 </div>
             );
         }
     }
     
-    return (RenderSite());
+    render(){
+        return (
+            <div>
+                {this.renderSite(this.props)}
+            </div>
+        );
+    }
 }
 
 export default Site;

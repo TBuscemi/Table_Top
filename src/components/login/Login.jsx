@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import axios from 'axios';
 import "./Login.css"
-import LoggedIn from '../navSites/sites/LoggedIn';
+
 
 
 
@@ -43,10 +43,10 @@ class Login extends React.Component {
             console.log(this.state.password)
             console.log(localStorage.getItem('token'))
             localStorage.getItem('token');
-            let user = await axios.post(user_data.username)
-            this.props.setRole ("LoggedIn") 
-            this.props.setUser(user.data)
-            // window.location = '/';
+            // let user = await axios.post(user_data.username)
+            // this.props.setRole ("LoggedIn") 
+            // this.props.setUser(user.data)
+            //  window.location = '/';
         }
             catch (error){
             console.log(error)
@@ -57,7 +57,7 @@ class Login extends React.Component {
 
     render() {
         return (
-            <div className="">
+            <div>
                 <form onSubmit={this.handleSubmit}>
                     <label for="username">Username: </label>
                     <input type="text" name="username" onChange={this.handleChange} value={this.state.username}/><br></br>

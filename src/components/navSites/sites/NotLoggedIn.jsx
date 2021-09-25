@@ -1,9 +1,8 @@
-import { Container, Nav, Navbar, NavbarBrand, NavLink,} from 'react-bootstrap';
+import { Nav, Navbar, NavbarBrand, } from 'react-bootstrap';
 import {
     BrowserRouter as Router,
     Switch,
     Route,
-    Link
   }from "react-router-dom";
 import Home from '../../home/Home';
 import Login from '../../login/Login';
@@ -28,10 +27,9 @@ const NotLoggedIn = ({role, setRole, user, setUser}) => {
             <Switch>
                 <Route path='/register'  exact component={Register}></Route>
                 <Route path='/' exact component={Home}></Route>
-                <Route path='/login' element={<Login role = {role} user={user}  />}/>
+                <Route path='/login' exact component={Login}></Route>
             </Switch>
-        </Router> 
-            
+        </Router>           
         </div>
     )
 }

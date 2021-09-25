@@ -2,8 +2,7 @@ import "./RegisterChat.css"
 import axios from "axios";
 import { Button, Form, } from 'react-bootstrap'
 import React,{setError} from "react";
-import { render } from "@testing-library/react";
-import { ChatEngine,Ch} from 'react-chat-engine'
+
 
 
 class RegisterChat extends React.Component {
@@ -18,7 +17,7 @@ class RegisterChat extends React.Component {
         handleSubmit(event) {
             event.preventDefault();
            
-            let authHeader = {'Private-Key': '4a0c3434-a015-4db4-ab18-d26d16739e76'}
+            // let authHeader = {'Private-Key': '4a0c3434-a015-4db4-ab18-d26d16739e76'}
             
             let newUser = {
                 userName: this.state.userName,

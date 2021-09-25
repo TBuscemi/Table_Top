@@ -1,9 +1,8 @@
-import { Container, Nav, Navbar, NavbarBrand, NavLink,} from 'react-bootstrap';
+import { Nav, Navbar, NavbarBrand} from 'react-bootstrap';
 import {
     BrowserRouter as Router,
     Switch,
     Route,
-    Link
   }from "react-router-dom";
 import Home from '../../home/Home';
 import Account from '../../account/Account';
