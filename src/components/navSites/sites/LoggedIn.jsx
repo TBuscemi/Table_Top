@@ -27,7 +27,7 @@ const LoggedIn = ({role, setRole}) => {
                 </Nav>
             </Navbar>
             <Switch>
-                <Route path='/account'  exact component={Account}></Route>
+                <Route path='/account'  render={props => <Account {...props} user={user}/>} />
                 <Route path='/' exact component={Home}></Route>
                 <Route path='/chat' exact component={Chat}></Route>
                 <Route path='/chatReg' exact component={RegisterChat}></Route>

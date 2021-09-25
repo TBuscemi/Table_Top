@@ -11,14 +11,14 @@ class App extends Component {
   constructor(props) {
       super(props);
       this.state = {
-        user:[]
+        user:{}
 
       }
   }
 
   componentWillMount() {
       this.getUserToken();
-      let user=[]
+      let user={}
       
       
   }

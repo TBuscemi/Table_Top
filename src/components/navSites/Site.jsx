@@ -7,7 +7,7 @@ class Site extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            user:[],
+            user:{},
             role:''
   
         }

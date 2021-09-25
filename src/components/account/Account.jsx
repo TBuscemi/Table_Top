@@ -7,7 +7,7 @@ class Account extends React.Component {
     constructor(props) {
         super(props);
         this.state = { 
-            current_user : {}
+            user : {}
         }
     }
 
