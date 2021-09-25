@@ -64,7 +64,7 @@ class Register extends React.Component {
                     <label for="last_name">Last Name: </label>
                     <input type="text" name="last_name" onChange={(event) => this.handleChange(event)} value={this.state.last_name}/><br></br>
 
-                    <Button variant='info' block size="md" type="submit">Register!</Button>
+                    <Button type="submit">Register!</Button>
                 </form>
             </div>
         )

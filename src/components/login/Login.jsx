@@ -4,6 +4,7 @@ import "./Login.css"
 import LoggedIn from '../navSites/sites/LoggedIn';
 
 
+
 class Login extends React.Component {
     constructor(props) {
         super(props);
@@ -45,7 +46,7 @@ class Login extends React.Component {
             let user = await axios.post(user_data.username)
             this.props.setRole ("LoggedIn") 
             this.props.setUser(user.data)
-            // window.location = 'home/';
+            // window.location = '/';
         }
             catch (error){
             console.log(error)
@@ -53,8 +54,6 @@ class Login extends React.Component {
         }
       
     }
-
-    
 
     render() {
         return (
@@ -74,4 +73,3 @@ class Login extends React.Component {
 }
 
 export default Login;
- 
