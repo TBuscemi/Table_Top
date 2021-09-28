@@ -3,36 +3,36 @@ import NotLoggedIn from './sites/NotLoggedIn';
 import LoggedIn from './sites/LoggedIn';
 
 
+
 class Site extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            user:{},
-            role:''
+            user:[],
+            userId:[]
   
         }
     }
+ 
+
 
     renderSite(props){
         if(this.props.user.user_id === undefined){
-            console.log('notLoggedIn!');
-            console.log("test1 "+this.props.user.user_id);
-            console.log(props.user)
-           ;
-            ;
-        
+            console.log('notLoggedIn!')
             return (
                 <div id='nlDiv'>
-                    <NotLoggedIn user={this.props.user.user_id} role={this.role} />
+                    <NotLoggedIn userId={this.state.userId} user={this.state.user} />
                 </div>
             );
         }
         else{
             console.log('LoggedIn');
-            console.log(+this.props.user.user_id);
+            console.log(this.props.user.user_id);
+            let userId= this.props.user.user_id
+            console.log(userId)
             return (
                 <div>
-                    <LoggedIn user={this.state.user} role={this.role}/>
+                    <LoggedIn userId={userId} />
                 </div>
             );
         }

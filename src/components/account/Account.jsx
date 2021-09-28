@@ -1,24 +1,51 @@
 import React from 'react';
+import axios from 'axios';
+import { Component } from 'react';
 import "./Account.css"
+import AccountInfo from './accountInfo/AccountInfo';
 
 
 
-class Account extends React.Component {
+
+
+
+class Account extends Component {
     constructor(props) {
         super(props);
-        this.state = { 
-            user : {}
-        }
+        this.state = {
+            accountData:[]
+    
+          }     
+    }
+ 
+
+    componentDidMount(){
+        this.getUserById()
+        console.log(this.props.user)
+    }
+   
+    
+    async getUserById(){
+        try{
+            let response = await axios.get('http://127.0.0.1:8000/api/account/user/'+ this.props.user+'/')
+            this.setState ({accountData : response.data})
+            console.log(this.state.accountData)
+            
+              
+            }
+            
+        catch(ex){
+             console.log("error in api call");
+        }  
     }
 
     render() {
+        
+
+           
         return (
-            <div className="">
-                {/* <h3>User Info:</h3>
-                <h5>First Name:  {this.props.current_user.first_name}</h5>
-                <h5>Last Name:  {this.props.current_user.last_name}</h5>
-                <h5>Username:  {this.props.current_user.username}</h5>
-                <h5>email:  {this.props.current_user.email}</h5> */}
+            <div>
+                <AccountInfo accountData = {this.state.accountData} user={this.props.user}/>
             </div>
         )
     }

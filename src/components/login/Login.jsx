@@ -43,10 +43,7 @@ class Login extends React.Component {
             console.log(this.state.password)
             console.log(localStorage.getItem('token'))
             localStorage.getItem('token');
-            // let user = await axios.post(user_data.username)
-            // this.props.setRole ("LoggedIn") 
-            // this.props.setUser(user.data)
-            //  window.location = '/';
+             window.location = '/';
         }
             catch (error){
             console.log(error)

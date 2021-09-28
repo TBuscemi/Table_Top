@@ -2,6 +2,8 @@ import './App.css';
 import React,{Component} from 'react';
 import jwtDecode from "jwt-decode"
 import Site from './components/navSites/Site';
+import Account from './components/account/Account';
+import AccountInfo from './components/account/accountInfo/AccountInfo';
 // import Footer from './components/footer/Footer';
 
 
@@ -11,26 +13,27 @@ class App extends Component {
   constructor(props) {
       super(props);
       this.state = {
-        user:{}
+        user:[]
 
       }
   }
 
   componentWillMount() {
       this.getUserToken();
-      let user={}
+      let user=[]
       
       
   }
 
   getUserToken() {
-      const jwt = localStorage.getItem('token');
+      let jwt = localStorage.getItem('token');
   
       console.log(jwt)
       try{
           const user = jwtDecode(jwt);
           console.log("jwt"+user);
-          this.setState({user}, () => console.log("user state "+this.state))
+          this.setState({user} )
+          console.log(this.state)
       } catch (err) {
           console.log(err)
       }
@@ -39,6 +42,7 @@ class App extends Component {
 
   render(){
     return (
+     
       <div className="App" style={{
         backgroundColor: 'darkgreen',
         backgroundSize: 'cover',
