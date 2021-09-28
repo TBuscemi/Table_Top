@@ -2,9 +2,7 @@ import './App.css';
 import React,{Component} from 'react';
 import jwtDecode from "jwt-decode"
 import Site from './components/navSites/Site';
-import Account from './components/account/Account';
-import AccountInfo from './components/account/accountInfo/AccountInfo';
-// import Footer from './components/footer/Footer';
+
 
 
 
@@ -49,7 +47,6 @@ class App extends Component {
         height: '100vh'
       }}>
         <Site user={this.state.user}/>
-        {/* <Footer/> */}
       </div>
     );
     }

@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import "./Login.css"
+import Footer from "../footer/Footer";
 
 
 
@@ -64,6 +65,9 @@ class Login extends React.Component {
 
                     <button type="submit">Login</button>
                 </form>
+                <div>
+                   <Footer/>
+                </div>
             </div>
         )
     }

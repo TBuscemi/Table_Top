@@ -2,6 +2,7 @@ import axios from 'axios';
 import React from 'react';
 import "./Register.css";
 import Button from 'react-bootstrap/button';
+import Footer from "../footer/Footer";
 
 
 
@@ -33,10 +34,10 @@ class Register extends React.Component {
         axios.post('http://127.0.0.1:8000/api/auth/register/', new_user)
         localStorage.removeItem('token')
         console.log(localStorage.getItem('token'))
-        // // window.location = "/login"
+        window.location = "/login"
     }
 
-    handleChange(event){
+    handleChange(event) {
         event.persist();
 
         this.setState({
@@ -48,6 +49,8 @@ class Register extends React.Component {
         return (
             <div className="register">
                 <form onSubmit={(event) => this.handleSubmit(event)}>
+                    <br/>
+                    <br/>
                     <h3>Create New User:</h3>
                     <label for="username">Username: </label>
                     <input type="text" name="username" onChange={(event) => this.handleChange(event)} value={this.state.username}/><br></br>
@@ -66,6 +69,9 @@ class Register extends React.Component {
 
                     <Button type="submit">Register!</Button>
                 </form>
+                <div>
+                   <Footer/>
+                </div>
             </div>
         )
     }

@@ -11,6 +11,7 @@ import './LoggedIn.css'
 import Chat from '../../chat/Chat';
 import RegisterChat from '../../chat/registerChat/RegisterChat';
 import '../Site';
+import Tutorials from '../../tutorials/Tutorials';
 
 
 
@@ -34,13 +35,15 @@ class LoggedIn extends Component {
                     <Nav.Item><Nav.Link id="textLinks" href="/account">Account</Nav.Link></Nav.Item>
                     <Nav.Item><Nav.Link id="textLinks" href="/chat">Chat</Nav.Link></Nav.Item>
                     <Nav.Item><Nav.Link id="textLinks" href="/chatReg"> REG Chat</Nav.Link></Nav.Item>
+                    <Nav.Item><Nav.Link  id="textLinks" href="/tutorials">Tutorials</Nav.Link></Nav.Item>
                     </Nav>
                 </Navbar>
                 <Switch>
                 <Route path='/account'  render={props => <Account {...props} user={this.props.userId}/>} />
                     <Route path='/' exact component={Home}></Route>
                     <Route path='/chat' exact component={Chat}></Route>
-                    <Route path='/chatReg' exact component={RegisterChat}></Route>  
+                    <Route path='/chatReg' exact component={RegisterChat}></Route> 
+                    <Route path='/tutorials' exact component={Tutorials}></Route> 
                 </Switch>
             </Router> 
                 

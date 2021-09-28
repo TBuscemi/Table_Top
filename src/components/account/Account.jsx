@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Component } from 'react';
 import "./Account.css"
 import AccountInfo from './accountInfo/AccountInfo';
+import Footer from "../footer/Footer";
 
 
 
@@ -46,6 +47,9 @@ class Account extends Component {
         return (
             <div>
                 <AccountInfo accountData = {this.state.accountData} user={this.props.user}/>
+                <div>
+                   <Footer/>
+                </div>
             </div>
         )
     }
