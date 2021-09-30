@@ -27,6 +27,12 @@ class RegisterChat extends React.Component {
             try{
             axios.post('https://api.chatengine.io/users/',newUser,{
             Headers:{'PRIVATE-KEY': '4a0c3434-a015-4db4-ab18-d26d16739e76'}})
+            .then((apiRes) => {
+                return {
+                  error: null,
+                  body: apiRes.data
+                }
+              })
             }catch (error) {
             console.log(error);
             setError(`oops, something went wrong`)

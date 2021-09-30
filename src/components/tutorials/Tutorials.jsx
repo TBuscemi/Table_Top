@@ -15,7 +15,7 @@ class Tutorials extends React.Component {
             <div>
                 <div>
 
-                <label id="platform"for="">D&D Tutorial!!:</label>
+                <h6>D&D Tutorial!!</h6>
                 <ReactPlayer
                     url="https://www.youtube.com/watch?v=ZsPrUwcjxEw&ab_channel=Dungeons%26Dragons"/>
                 </div>

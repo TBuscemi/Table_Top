@@ -2,25 +2,27 @@ import  './Home.css'
 import React from 'react';
 import axios from 'axios';
 import Footer from "../footer/Footer";
+import Button from 'react-bootstrap/button';
 
 
 class Home extends React.Component {
     constructor(props) {
         super(props);
         this.state={
-            friends:[]
+            people:[]
         }
 
     }
 
     componentDidMount(){
-        this.getFriends()
         
+
     }
-    async getFriends(){
+    
+    getFriends(){
         let response = axios.post('http://127.0.0.1:8000/api/account/search/')
-        this.setState ({friends : response.data})
-            console.log(this.state.friends)
+        this.setState ({people : response.data})
+        console.log(response)
 
     }
 
@@ -28,6 +30,7 @@ class Home extends React.Component {
     render(){
         return (
             <div >
+                <form onSubmit={(event) => this.getFriends()(event)}>
                 <div>
                     <h1 class="textCenter">Looking For Fellow Adventurers?!</h1>
                 </div>
@@ -102,7 +105,7 @@ class Home extends React.Component {
                     </select>
                 <div class="col-4"> </div> 
                 </div>
-                {/* <table>
+                <table>
                     <thead>
                         <tr>
                              <th>Discord</th>
@@ -117,18 +120,19 @@ class Home extends React.Component {
                     <tbody>
                    
                         <tr>
-                             <td>{this.props.accountData.discord}</td>
-                             <td>{this.props.accountData.campaign_length}</td>
-                             <td>{this.props.accountData.platform_played_on}</td>
-                             <td>{this.props.accountData.game_systems_looking_for}</td>
-                             <td>{this.props.accountData.description}</td>
-                             <td>{this.props.accountData.gm}</td>
-                             <td>{this.props.accountData.player}</td>
+                             <td>{this.state.people.discord}</td>
+                             {/* <td>{people.campaign_length}</td>
+                             <td>{people.platform_played_on}</td>
+                             <td>{people.game_systems_looking_for}</td>
+                             <td>{people.description}</td>
+                             <td>{people.gm}</td>
+                             <td>{people.player}</td> */}
                         </tr>
                      </tbody>
-                </table> */}
-                
+                </table>
                 </div>
+                <Button type="submit">Search</Button>
+                </form>
                 <div>
                    <Footer/>
                 </div>
