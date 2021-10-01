@@ -1,22 +1,31 @@
+import Select from 'react-select'
 import axios from 'axios';
 import React,{Component} from 'react';
 import "./AccountInfo.css"
 import { Card } from 'react-bootstrap';
+import makeAnimated from 'react-select/animated';
 
 
+const campL= [
+    {index:0, value: 'One Shot', label: 'One Shot' },
+    {index:1, value: 'Short Campaign', label: 'Short Campaign' },
+    {index:2, value: 'Long Campaign', label: 'Long Campaign' },
+  ];
+
+const animatedComponents = makeAnimated();
 
 class AccountInfo extends Component {
     constructor(props) {
         super(props); 
         this.state ={
             discord:this.props.discord,
-            campaign_length:"",
-            platform_played_on:"",
-            systems_looking_for:"",
-            description:"",
-            gm:"",
-            player:"",
-            looking_for_game:""
+            campaign_length:this.props.campaign_length,
+            platform_played_on:this.props.platform_played_on,
+            game_systems_looking_for:this.props.game_systems_looking_for,
+            description:this.props.description,
+            gm:this.props.gm,
+            player:this.props.player,
+            looking_for_game:this.props.looking_for_game
         }
         this.handleSubmit = this.handleSubmit.bind(this);
     }
@@ -24,56 +33,63 @@ class AccountInfo extends Component {
     
  
     handleSubmit(event){
+        console.log(this.state)
         event.preventDefault();
-        console.log(event.target.elements.discord.value)
+        console.log(event.target.elements.campaign_length.value)
         this.setState({
-
-            discord:event.target.elements.discord.value
+            discord:event.target.elements.discord.value,
+            campaign_length:event.target.elements.campaign_length.value,
+            platform_played_on:event.target.elements.platform_played_on.value,
+            game_systems_looking_for:event.target.elements.game_systems_looking_for.value,
+            description:event.target.elements.description.value,
+            gm:event.target.elements.gm.value,
+            player:event.target.elements.player.value,
+            looking_for_game:event.target.elements.looking_for_game.value,
+     
         })
-        let accountData = event.target.elements.discord.value
-        
-        console.log(accountData)
-            
-        this.setUser(accountData) 
-        
+        let accountData ={
+            discord:event.target.elements.discord.value,
+            campaign_length:event.target.elements.campaign_length.value,
+            platform_played_on:event.target.elements.platform_played_on.value,
+            game_systems_looking_for:event.target.elements.game_systems_looking_for.value,
+            description:event.target.elements.description.value,
+            gm:event.target.elements.gm.value,
+            player:event.target.elements.player.value,
+            looking_for_game:event.target.elements.looking_for_game.value,
 
+        } 
+        
+        
+        console.log(this.props) 
+        this.setUser(accountData) 
     }
 
     async setUser(accountData){
-      
         let request =   await axios.get('http://127.0.0.1:8000/api/account/user/'+this.props.user+'/')
         
         let user = request.data
         let updateUser = {
-            discord:accountData,
-            platform_played_on:user.platform_played_on,
-            game_systems_looking_for:user.game_systems_looking_for,
-            campaign_length:user.campaign_length,
-            description:user.description,
-            player:user.player,
-            gm:user.gm,
-            looking_for_game:user.looking_for_game,
+            discord:accountData.discord,
+            platform_played_on:accountData.platform_played_on,
+            game_systems_looking_for:accountData.game_systems_looking_for,
+            campaign_length:accountData.campaign_length,
+            description:accountData.description,
+            player:accountData.player,
+            gm:accountData.gm,
+            looking_for_game:accountData.looking_for_game,
         }
         
         
-        updateUser.discord = accountData
+        
         axios.put ('http://127.0.0.1:8000/api/account/user/'+this.props.user+'/', updateUser)
 
     }
     
     
-    handleChange(event){    
-        event.persist()
-        
-        this.setState({
-        [event.target.name]: event.target.defaultValue
-        })
-    }
-
     componentDidMount(){   
-        console.log(this.props.accountData.discord)
-        console.log(this.props.user)
-        console.log(this.state)
+        console.log(this.props.updateUser)
+        console.log(this.props.user_id)
+        
     }
 
     
@@ -82,76 +98,46 @@ class AccountInfo extends Component {
     render(){
         return (
             <div className="">
-                
-                {/* <table>
-                    <thead>
-                        <tr>
-                             <th>Discord</th>
-                             <th>How Long Of A campaign_length</th>
-                             <th>What Platform Do you Play On</th>
-                             <th>What Game System Do You Wanna Play On</th>
-                             <th>Short Description</th>
-                             <th>Are You A GM</th>
-                             <th>Are You A Player</th>
-                             <th>Looking For A Game</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                   
-                        <tr>
-                             <td>{this.props.accountData.discord}</td>
-                             <td>{this.props.accountData.campaign_length}</td>
-                             <td>{this.props.accountData.platform_played_on}</td>
-                             <td>{this.props.accountData.game_systems_looking_for}</td>
-                             <td>{this.props.accountData.description}</td>
-                             <td>{this.props.accountData.gm}</td>
-                             <td>{this.props.accountData.player}</td>
-                             <td>{this.props.accountData.looking_for_game}</td>
-                        </tr>
-                     </tbody>
-                </table> */}
                 <div>
                         <h1>Your Account!</h1>
 
                         <form onSubmit={this.handleSubmit}>
                         <div>
-                            <label for= "discord">Discord:</label>
-                            <input type="text" name="discord" defaultValue={this.props.accountData.discord} />
+                            <label for= "discord">Discord:</label> <br />
+                            <input type="text" name="discord" value={this.props.accountData.discord} />
             
                         </div>
                         <div>
-                             <label for= "campaign_length">How Long Of A campaign Do You W:</label>
-                             <select defaultValue={this.props.accountData.campaign_length} >
-                             <option value = "One Shot">One Shot</option> 
-                             <option value = "Short Campaign">Short Campaign</option> 
-                             <option value = "Short Campaign">long Campaign</option> 
-                             </select>
+                            <label for= "campaign_length">Campaign Length:</label>
+                            <h3>One Shot/Short Campaign/Long Campaign</h3>
+                            <input type="text" name="campaign_length" defaultValue={this.props.accountData.campaign_length} />
                         </div>
                         <div>
                              <label for= "platform_played_on">What Platform Do you Play On</label>
+                             <h3>Roll20/Fantasy Grounds</h3>
                              <input type="text" name="platform_played_on" defaultValue={this.props.accountData.platform_played_on} />  
                         </div>
                         <div>
                              <label for= "game_systems_looking_for">What Game System Are You Looking For</label>
+                             <h3>D&D/Pathfinder</h3>
                              <input type="text" name="game_systems_looking_for"defaultValue={this.props.accountData.game_systems_looking_for} />  
                         </div>
                         <div>
-                             <label for= "description"> Short Description</label>
-                             <input type="text" name="description" defaultValue={this.props.accountData.description} />  
-                        </div>
-                        <div>
                              <label for= "gm">Are You A Game Master</label>
+                             <h3>Yes/No</h3>
                              <input type="text" name="gm"defaultValue={this.props.accountData.gm} />  
                         </div>
                         <div>
                             <label for= "player">Are You A Player</label>
+                            <h3>Yes/No</h3>
                             <input type="text" name="player"defaultValue={this.props.accountData.player} />  
                         </div>
                         <div>
                             <label for= "looking_for_game">Looking For A Game</label>
+                            <h3>Yes/No</h3>
                             <input type="text" name="looking_for_game"defaultValue={this.props.accountData.looking_for_game} />  
                         </div>
-                            <button type="submit">Update</button>
+                           <br /> <button type="submit">Update</button>
                         </form>
                 </div> 
                 {/* <div><Card style={{ width: '18rem' }}>

@@ -29,12 +29,15 @@ class Register extends React.Component {
             last_name: this.state.last_name
         }
         
-        console.log(new_user)
+        console.log(new_user)   
         
-        axios.post('http://127.0.0.1:8000/api/auth/register/', new_user)
+        let request = axios.post('http://127.0.0.1:8000/api/auth/register/', new_user)
+        console.log(request.data.user_id)
         localStorage.removeItem('token')
         console.log(localStorage.getItem('token'))
-        window.location = "/login"
+        
+        
+        window.location = "/login" 
     }
 
     handleChange(event) {

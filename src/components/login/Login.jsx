@@ -44,7 +44,22 @@ class Login extends React.Component {
             console.log(this.state.password)
             console.log(localStorage.getItem('token'))
             localStorage.getItem('token');
-             window.location = '/';
+            // try{
+            //     let response = await axios.get('http://127.0.0.1:8000/api/account/user/'+ this.props.user+'/')
+            //     this.setState ({accountData : response.data})
+            //     console.log(this.state.accountData)
+            // }
+            // catch(error){
+            //     let user = {
+            //         user: this.state.username,
+                    
+            //     }
+
+            // }
+
+
+
+            // window.location = '/';
         }
             catch (error){
             console.log(error)

@@ -16,6 +16,7 @@ class RegisterChat extends React.Component {
 
         handleSubmit(event) {
             event.preventDefault();
+            console.log(this.state.secret)
            
             // let authHeader = {'Private-Key': '4a0c3434-a015-4db4-ab18-d26d16739e76'}
             
@@ -26,14 +27,9 @@ class RegisterChat extends React.Component {
            
             try{
             axios.post('https://api.chatengine.io/users/',newUser,{
-            Headers:{'PRIVATE-KEY': '4a0c3434-a015-4db4-ab18-d26d16739e76'}})
-            .then((apiRes) => {
-                return {
-                  error: null,
-                  body: apiRes.data
-                }
-              })
-            }catch (error) {
+            Headers:{'PRIVATE-KEY': '4a0c3434-a015-4db4-ab18-d26d16739e76'}})   
+            }
+            catch (error) {
             console.log(error);
             setError(`oops, something went wrong`)
             }
@@ -58,7 +54,7 @@ class RegisterChat extends React.Component {
                 <Form onSubmit={(event) => this.handleSubmit(event)}>
                 
                 <label for="username">Username: </label>
-                    <input type="text" name="username" onChange={(event) => this.handleChange(event)} value={this.state.username}/><br></br>
+                    <input type="text" name="username" onChange={(event) => this.handleChange(event)} value={this.state.userName}/><br></br>
                     
                 <label for="secret">Password: </label>
                     <input type="text" name="secret" onChange={(event) => this.handleChange(event)} value={this.state.secret}/><br></br>
