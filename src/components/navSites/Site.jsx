@@ -27,9 +27,7 @@ class Site extends Component {
         }
         else{
             console.log('LoggedIn');
-            console.log(this.props.user.user_id);
             let userId= this.props.user.user_id
-            console.log(userId)
             return (
                 <div>
                     <LoggedIn userId={userId} />

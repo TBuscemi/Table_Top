@@ -1,9 +1,11 @@
 import { Nav, Navbar, NavbarBrand} from 'react-bootstrap';
+import axios from 'axios';
 import { Component } from 'react';
 import {
     BrowserRouter as Router,
     Switch,
     Route,
+    Redirect,
   }from "react-router-dom";
 import Home from '../../home/Home';
 import Account from '../../account/Account';
@@ -12,17 +14,27 @@ import Chat from '../../chat/Chat';
 import RegisterChat from '../../chat/registerChat/RegisterChat';
 import '../Site';
 import Tutorials from '../../tutorials/Tutorials';
+import TutorialsPartyLeader from '../../tutorials/tutorialsPartyLeader/tutorialsPartyLeader';
 
 
 
 class LoggedIn extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            accountData :[]
+        }
     }
     
     componentDidMount() {
-        console.log(this.props.userId)
+      
+        this.getUserById()
       }
+
+    async getUserById(){
+        let response = await axios.get('http://127.0.0.1:8000/api/account/user/'+ this.props.userId+'/')
+        this.setState ({accountData : response.data})
+        }
 
     render(){    
         return (
@@ -43,7 +55,15 @@ class LoggedIn extends Component {
                     <Route path='/' exact component={Home}></Route>
                     <Route path='/chat' exact component={Chat}></Route>
                     <Route path='/chatReg' exact component={RegisterChat}></Route> 
-                    <Route path='/tutorials' exact component={Tutorials}></Route> 
+                    <Route render={props => {
+                        if(this.state.accountData.party_leaders === "yes"){
+                            return <Route path='/tutorials' exact component = {Tutorials}/>
+                        }
+                        else{
+                            console.log("party")
+                            return <Route path='/tutorials' render={props => <TutorialsPartyLeader {...props} accountData={this.state.accountData}/> }/>
+                        }
+                    }}/>
                 </Switch>
             </Router> 
                 
@@ -54,3 +74,4 @@ class LoggedIn extends Component {
 
 
 export default LoggedIn;
+

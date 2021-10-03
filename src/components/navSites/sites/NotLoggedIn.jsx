@@ -21,6 +21,7 @@ class NotLoggedIn extends Component {
     componentDidMount() {
         console.log(this.props.userId)
         console.log(this.props.user)
+
       }
 
     render(){

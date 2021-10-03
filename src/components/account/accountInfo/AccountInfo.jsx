@@ -2,17 +2,9 @@ import Select from 'react-select'
 import axios from 'axios';
 import React,{Component} from 'react';
 import "./AccountInfo.css"
-import { Card } from 'react-bootstrap';
-import makeAnimated from 'react-select/animated';
+import User from '../user/user';
 
 
-const campL= [
-    {index:0, value: 'One Shot', label: 'One Shot' },
-    {index:1, value: 'Short Campaign', label: 'Short Campaign' },
-    {index:2, value: 'Long Campaign', label: 'Long Campaign' },
-  ];
-
-const animatedComponents = makeAnimated();
 
 class AccountInfo extends Component {
     constructor(props) {
@@ -22,10 +14,10 @@ class AccountInfo extends Component {
             campaign_length:this.props.campaign_length,
             platform_played_on:this.props.platform_played_on,
             game_systems_looking_for:this.props.game_systems_looking_for,
-            description:this.props.description,
             gm:this.props.gm,
             player:this.props.player,
-            looking_for_game:this.props.looking_for_game
+            chat_name:this.props.chat_name,
+            looking_for_game:this.props.looking_for_game,
         }
         this.handleSubmit = this.handleSubmit.bind(this);
     }
@@ -33,18 +25,17 @@ class AccountInfo extends Component {
     
  
     handleSubmit(event){
-        console.log(this.state)
         event.preventDefault();
-        console.log(event.target.elements.campaign_length.value)
         this.setState({
             discord:event.target.elements.discord.value,
             campaign_length:event.target.elements.campaign_length.value,
             platform_played_on:event.target.elements.platform_played_on.value,
             game_systems_looking_for:event.target.elements.game_systems_looking_for.value,
-            description:event.target.elements.description.value,
             gm:event.target.elements.gm.value,
             player:event.target.elements.player.value,
             looking_for_game:event.target.elements.looking_for_game.value,
+            chat_name:event.target.elements.chat_name.value,
+
      
         })
         let accountData ={
@@ -52,20 +43,17 @@ class AccountInfo extends Component {
             campaign_length:event.target.elements.campaign_length.value,
             platform_played_on:event.target.elements.platform_played_on.value,
             game_systems_looking_for:event.target.elements.game_systems_looking_for.value,
-            description:event.target.elements.description.value,
             gm:event.target.elements.gm.value,
             player:event.target.elements.player.value,
             looking_for_game:event.target.elements.looking_for_game.value,
+            chat_name:event.target.elements.chat_name.value,
 
         } 
-        
-        
-        console.log(this.props) 
         this.setUser(accountData) 
     }
 
     async setUser(accountData){
-        let request =   await axios.get('http://127.0.0.1:8000/api/account/user/'+this.props.user+'/')
+        let request =  await axios.get('http://127.0.0.1:8000/api/account/user/'+this.props.user+'/')
         
         let user = request.data
         let updateUser = {
@@ -73,39 +61,33 @@ class AccountInfo extends Component {
             platform_played_on:accountData.platform_played_on,
             game_systems_looking_for:accountData.game_systems_looking_for,
             campaign_length:accountData.campaign_length,
-            description:accountData.description,
             player:accountData.player,
             gm:accountData.gm,
             looking_for_game:accountData.looking_for_game,
+            chat_name:accountData.chat_name,
         }
-        
-        
-        
+
         axios.put ('http://127.0.0.1:8000/api/account/user/'+this.props.user+'/', updateUser)
 
     }
     
-    
-    componentDidMount(){   
-        console.log(this.props.updateUser)
-        console.log(this.props.user_id)
-        
-    }
-
-    
-  
     
     render(){
         return (
             <div className="">
                 <div>
                         <h1>Your Account!</h1>
-
+                        <div>   
+                        </div>
                         <form onSubmit={this.handleSubmit}>
                         <div>
-                            <label for= "discord">Discord:</label> <br />
-                            <input type="text" name="discord" value={this.props.accountData.discord} />
+                            <label for= "discord">Discord:</label> 
+                            <input type="text" name="discord" defaultValue={this.props.accountData.discord} />
             
+                        </div>
+                        <div>
+                            <label for= "chat_name">Chat Name:</label> 
+                            <input type="text" name="chat_name" defaultValue={this.props.accountData.chat_name} />
                         </div>
                         <div>
                             <label for= "campaign_length">Campaign Length:</label>
@@ -119,7 +101,7 @@ class AccountInfo extends Component {
                         </div>
                         <div>
                              <label for= "game_systems_looking_for">What Game System Are You Looking For</label>
-                             <h3>D&D/Pathfinder</h3>
+                             <h3>Dungeon and Dragons/Pathfinder</h3>
                              <input type="text" name="game_systems_looking_for"defaultValue={this.props.accountData.game_systems_looking_for} />  
                         </div>
                         <div>
@@ -140,18 +122,6 @@ class AccountInfo extends Component {
                            <br /> <button type="submit">Update</button>
                         </form>
                 </div> 
-                {/* <div><Card style={{ width: '18rem' }}>
-                    <Card.Body>
-                        <Card.Title>Card Title</Card.Title>
-                        <Card.Subtitle className="mb-2 text-muted">Card Subtitle</Card.Subtitle>
-                        <Card.Text>
-                        Some quick example text to build on the card title and make up the bulk of
-                        the card's content.
-                        </Card.Text>
-                        <Card.Link href="#">Card Link</Card.Link>
-                        <Card.Link href="#">Another Link</Card.Link>
-                    </Card.Body>
-                    </Card></div> */}
             </div>
         )
     }

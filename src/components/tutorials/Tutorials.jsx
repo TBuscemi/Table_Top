@@ -10,9 +10,27 @@ class Tutorials extends React.Component {
         super(props);
 
     }
+
+    componentDidCatch(){
+
+    }
     render(){
         return(
             <div>
+                <div>
+
+                <h6>D&D Tutorial!!</h6>
+                <ReactPlayer
+                    url="https://www.youtube.com/watch?v=ZsPrUwcjxEw&ab_channel=Dungeons%26Dragons"/>
+                </div>
+                <div>
+                <label id="platform"for="">Pathfinder Tutorial!!:</label>
+                <ReactPlayer
+                    url="https://www.youtube.com/watch?v=gOqoRPKiahg&ab_channel=HollowTale "/>
+                </div>
+                <div>
+                   <Footer/>
+                </div>
                 <div>
 
                 <h6>D&D Tutorial!!</h6>

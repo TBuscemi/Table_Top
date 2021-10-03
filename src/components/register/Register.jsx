@@ -32,7 +32,7 @@ class Register extends React.Component {
         console.log(new_user)   
         
         let request = axios.post('http://127.0.0.1:8000/api/auth/register/', new_user)
-        console.log(request.data.user_id)
+        console.log(request.data    )
         localStorage.removeItem('token')
         console.log(localStorage.getItem('token'))
         

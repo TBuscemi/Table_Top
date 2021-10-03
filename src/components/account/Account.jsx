@@ -3,7 +3,8 @@ import axios from 'axios';
 import { Component } from 'react';
 import "./Account.css"
 import AccountInfo from './accountInfo/AccountInfo';
-import Footer from "../footer/Footer";
+// import Footer from "../footer/Footer";
+import User from './user/user';
 
 
 
@@ -21,7 +22,6 @@ class Account extends Component {
             campaign_length:"",
             platform_played_on:"",
             systems_looking_for:"",
-            description:"",
             gm:"",
             player:"",
             looking_for_game:""
@@ -33,7 +33,6 @@ class Account extends Component {
 
     componentDidMount(){
         this.getUserById()
-        console.log(this.props.user)
     }
    
     
@@ -41,7 +40,6 @@ class Account extends Component {
         try{
             let response = await axios.get('http://127.0.0.1:8000/api/account/user/'+ this.props.user+'/')
             this.setState ({accountData : response.data})
-            console.log(this.state.accountData)
             }
             
         catch(ex){
@@ -53,20 +51,15 @@ class Account extends Component {
                 discord:"Discord#0000",
                 campaign_length:"Short",
                 platform_played_on:"Roll20",
-                game_systems_looking_for:"d&d",
-                description:"Stuff Here",
+                game_systems_looking_for:"D&D",
                 gm:"no",
                 player:"Yes",
-                looking_for_game:"Yes"
+                looking_for_game:"Yes",
+                chat_name:"Enter Chat Name"
             }
-                console.log(this.state.user_id)
-                console.log(newUser)
-                
-            
+      
             let request = axios.post('http://127.0.0.1:8000/api/account/user/', newUser)
-            console.log(request)
-           
-
+        
         }  
     }
 
@@ -76,10 +69,11 @@ class Account extends Component {
            
         return (
             <div>
-                {console.log(this.state.accountData)}
+                {console.log(this.props.user)}
                 <AccountInfo accountData = {this.state.accountData} user={this.props.user}/>
+                <User user={this.props.user}/>
                 <div>
-                   <Footer/>
+                   {/* <Footer/> */}
                 </div>
             </div>
         )
