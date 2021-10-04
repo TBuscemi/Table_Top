@@ -134,18 +134,20 @@ class Home extends React.Component {
                         </div>
                 </form>
                 <div>
-                    <div class='col-8 text-center'>
-                        <h3> Fellow Adventures!!!</h3>
-                        <table>
+                    <div class='col-10 text-center'>
+                        <h2 class="textCenter"> Fellow Adventures!!!</h2>
+                        <table class = "player row">
                         <thead>
                             <tr>
-                                <th>Chat Name</th>
+                                <th><h3>Chat Name</h3></th>
                             </tr>
                         </thead>
                         <tbody>
                             
-                            {this.state.people.map((people, i)=> (
-                                <getFriends people={people}key={i}/>
+                            {this.state.people.map((person, i)=> (
+                                <tr>
+                                    <td class='text'>{person.chat_name}</td>
+                                </tr>
                             ))}
                         </tbody>                            
                         </table>
