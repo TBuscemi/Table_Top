@@ -12,3 +12,30 @@
   .Login{
     text-align: center;
   }
+
+.text{
+  color: rgb(87, 212, 129);
+  text-shadow: 2px 2px rgb(55, 77, 53);
+  text-align: center;
+  padding: 10px;
+}
+
+.btn {
+  background-color: rgb(55, 77, 53);
+  border: none;
+}
+
+.inputField {
+  background-color: rgba(55, 77, 53, 0.726);
+  border-radius: 10px;
+  border: none;
+}
+.img-fluid{
+  max-width: 800px;
+}
+.textCenter{
+  color: rgb(87, 212, 129);
+  text-shadow: 2px 2px rgb(55, 77, 53);
+  font-size: 54;
+  text-align: center;
+}

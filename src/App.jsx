@@ -37,11 +37,7 @@ class App extends Component {
   render(){
     return (
      
-      <div className="App" style={{
-        backgroundColor: 'darkgreen',
-        backgroundSize: 'cover',
-        height: '100vh'
-      }}>
+      <div>
         <Site user={this.state.user}/>
       </div>
     );

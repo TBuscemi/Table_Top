@@ -1,11 +1,13 @@
 #textLinks{
-    color: rgb(255, 255, 255);
+    color: rgb(241, 255, 220);
     font-size: 25px;
-    margin-right: 52px ;
+    margin-right: 52px;
+    border-radius: 10px;
 }
 
 #title{
-
+    color:rgb(241, 255, 220);
     font-size: 40px;
     margin-right: 22%;
+    padding-left: 3%;
 }

@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Component } from 'react';
 import "./Account.css"
 import AccountInfo from './accountInfo/AccountInfo';
-// import Footer from "../footer/Footer";
+import Footer from "../footer/Footer";
 import User from './user/user';
 
 
@@ -24,7 +24,8 @@ class Account extends Component {
             systems_looking_for:"",
             gm:"",
             player:"",
-            looking_for_game:""
+            looking_for_game:"",
+            party_leaders:""
 
     
           }     
@@ -32,7 +33,9 @@ class Account extends Component {
  
 
     componentDidMount(){
-        this.getUserById()
+        this.getUserById() 
+        console.log(this.props.user)
+
     }
    
     
@@ -43,6 +46,7 @@ class Account extends Component {
             }
             
         catch(ex){
+            console.log("made a account")
             this.setState({
                 user_id:this.props.user
             })
@@ -55,25 +59,22 @@ class Account extends Component {
                 gm:"no",
                 player:"Yes",
                 looking_for_game:"Yes",
-                chat_name:"Enter Chat Name"
+                chat_name:"Enter Chat Name",
+                party_leaders:"no"
             }
-      
+            console.log(newUser)
             let request = axios.post('http://127.0.0.1:8000/api/account/user/', newUser)
         
         }  
     }
 
-    render() {
-        
-
-           
+    render() {    
         return (
             <div>
-                {console.log(this.props.user)}
                 <AccountInfo accountData = {this.state.accountData} user={this.props.user}/>
                 <User user={this.props.user}/>
                 <div>
-                   {/* <Footer/> */}
+                   <Footer/>
                 </div>
             </div>
         )

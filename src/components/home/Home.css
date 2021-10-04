@@ -1,5 +1,28 @@
+body{
+    background-image: url(../home/woodFloorDarkOpacity.png);
+    background-position: absolute;
+    background-repeat: no-repeat;
+    background-size:cover;
+}
+
+.dropdown {
+    background-color: rgb(55, 77, 53);
+    border-radius: 10px;
+    border: none;
+}
+
+.whiteText {
+    color:rgb(241, 255, 220);
+}
+
+.btn {
+    background-color: rgb(55, 77, 53);
+    border: none;
+}
+
 .textCenter{
-    color: aliceblue;
+    color: rgb(87, 212, 129);
+    text-shadow: 2px 2px rgb(55, 77, 53);
     font-size: 54;
     text-align: center;
 }
@@ -9,31 +32,43 @@
 }
 
 .system{
-    color: aliceblue;
+    color: rgb(87, 212, 129);
+    text-shadow: 2px 2px rgb(55, 77, 53);
     text-align: center;
     font-size: 19px;
 }
 
 .length{
-    color: aliceblue;
+    color: rgb(87, 212, 129);
+    text-shadow: 2px 2px rgb(55, 77, 53);
+    text-align: center;
+    font-size: 19px;
+}
+
+.looking_for_game{
+    color: rgb(87, 212, 129);
+    text-shadow: 2px 2px rgb(55, 77, 53);
     text-align: center;
     font-size: 19px;
 }
 
 .player{
-    color: aliceblue;
+    color: rgb(87, 212, 129);
+    text-shadow: 2px 2px rgb(55, 77, 53);
     text-align: center;
     font-size: 19px;
 }
 
 .gm{
-    color: aliceblue;
+    color: rgb(87, 212, 129);
+    text-shadow: 2px 2px rgb(55, 77, 53);
     text-align:center;
     font-size: 19px;
 }
 
 .platform{
-    color: aliceblue;
+    color: rgb(87, 212, 129);
+    text-shadow: 2px 2px rgb(55, 77, 53);
     text-align: center;
     font-size: 19px;
 }

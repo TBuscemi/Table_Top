@@ -5,8 +5,8 @@ import {
     BrowserRouter as Router,
     Switch,
     Route,
-    Redirect,
-  }from "react-router-dom";
+}
+from "react-router-dom";
 import Home from '../../home/Home';
 import Account from '../../account/Account';
 import './LoggedIn.css'
@@ -15,7 +15,7 @@ import RegisterChat from '../../chat/registerChat/RegisterChat';
 import '../Site';
 import Tutorials from '../../tutorials/Tutorials';
 import TutorialsPartyLeader from '../../tutorials/tutorialsPartyLeader/tutorialsPartyLeader';
-
+import './LoggedIn.css'
 
 
 class LoggedIn extends Component {
@@ -46,7 +46,7 @@ class LoggedIn extends Component {
                     <Nav.Item><Nav.Link id="textLinks" href="/">Home </Nav.Link></Nav.Item>
                     <Nav.Item><Nav.Link id="textLinks" href="/account">Account</Nav.Link></Nav.Item>
                     <Nav.Item><Nav.Link id="textLinks" href="/chat">Chat</Nav.Link></Nav.Item>
-                    <Nav.Item><Nav.Link id="textLinks" href="/chatReg"> REG Chat</Nav.Link></Nav.Item>
+                    {/* <Nav.Item><Nav.Link id="textLinks" href="/chatReg"> REG Chat</Nav.Link></Nav.Item> */}
                     <Nav.Item><Nav.Link  id="textLinks" href="/tutorials">Tutorials</Nav.Link></Nav.Item>
                     </Nav>
                 </Navbar>
@@ -56,7 +56,7 @@ class LoggedIn extends Component {
                     <Route path='/chat' exact component={Chat}></Route>
                     <Route path='/chatReg' exact component={RegisterChat}></Route> 
                     <Route render={props => {
-                        if(this.state.accountData.party_leaders === "yes"){
+                        if(this.state.accountData.party_leaders === "no"){
                             return <Route path='/tutorials' exact component = {Tutorials}/>
                         }
                         else{

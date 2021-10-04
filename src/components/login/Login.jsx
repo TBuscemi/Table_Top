@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import "./Login.css"
 import Footer from "../footer/Footer";
+import greenDice from './greenDice.png';
 
 
 
@@ -44,22 +45,7 @@ class Login extends React.Component {
             console.log(this.state.password)
             console.log(localStorage.getItem('token'))
             localStorage.getItem('token');
-            // try{
-            //     let response = await axios.get('http://127.0.0.1:8000/api/account/user/'+ this.props.user+'/')
-            //     this.setState ({accountData : response.data})
-            //     console.log(this.state.accountData)
-            // }
-            // catch(error){
-            //     let user = {
-            //         user: this.state.username,
-                    
-            //     }
-
-            // }
-
-
-
-            // window.location = '/';
+            window.location = '/';
         }
             catch (error){
             console.log(error)
@@ -70,16 +56,20 @@ class Login extends React.Component {
 
     render() {
         return (
-            <div>
+            <div align="center" class="pt-5 mt-5">
+                <h1 class="textCenter">Login Below</h1> 
                 <form onSubmit={this.handleSubmit}>
-                    <label for="username">Username: </label>
-                    <input type="text" name="username" onChange={this.handleChange} value={this.state.username}/><br></br>
+                    <label class="text fs-2" for="username">Username:</label>
+                    <input class="inputField form-control-lg" type="text" name="username" onChange={this.handleChange} value={this.state.username}/><br></br>
                     
-                    <label for="password">Password: </label>
-                    <input type="password" name="password" onChange={this.handleChange} value={this.state.password}/><br></br>
+                    <label class="text fs-2" for="password">Password:</label>
+                    <input class="inputField form-control-lg" type="password" name="password" onChange={this.handleChange} value={this.state.password}/><br></br>
 
-                    <button type="submit">Login</button>
+                    <button class="m-3 btn pt-2" type="submit"><span class="whiteText px-2 py-2 fs-3">Login</span></button>
                 </form>
+                <div>
+                    <img class="img-fluid" id="greenDice" src={greenDice} alt='set of gaming dice in green hues' />
+                </div>
                 <div>
                    <Footer/>
                 </div>
@@ -87,5 +77,4 @@ class Login extends React.Component {
         )
     }
 }
-
 export default Login;

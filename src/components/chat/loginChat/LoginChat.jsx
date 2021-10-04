@@ -34,13 +34,13 @@ const LoginChat = () => {
 
   return (
     <div>
-      <div >
-        <h1>Chat Application</h1>
+      <div align="center" class="pt-5 mt-5">
+        <h1 class="textCenter">Chat Application</h1>
         <form onSubmit={handleSubmit}>
-          <input type="text" value={userName} onChange={(event) => setUsername(event.target.value)} className="input" placeholder="Username" required />
-          <input type="password" value={password} onChange={(event) => setPassword(event.target.value)} className="input" placeholder="Password" required />
+          <input class="inputField form-control-lg m-2" type="text" value={userName} onChange={(event) => setUsername(event.target.value)} className="input" placeholder="Username" required />
+          <input class="inputField form-control-lg m-2" type="password" value={password} onChange={(event) => setPassword(event.target.value)} className="input" placeholder="Password" required /> <br/>
           <div align="center">
-          <Button type="submit">Lets Go!!</Button>
+            <Button class="m-3 btn pt-2" type="submit"><span class="whiteText px-2 py-2 fs-3">Lets Go!!</span></Button>
           </div>
         </form>
         <h1>{error}</h1>

@@ -1,12 +1,11 @@
+
 .goblinFooter {
-    position: fixed; 
-    bottom: 0; 
-    width: 100%;
-    text-align: center;
+    float: left;
+    position: fixed;
 }
 
 #goblinImage
 {
-    height: 5vh;
+    height: 30vh;
     width: auto;
 }

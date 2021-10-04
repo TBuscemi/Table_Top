@@ -32,7 +32,6 @@ class Register extends React.Component {
         console.log(new_user)   
         
         let request = axios.post('http://127.0.0.1:8000/api/auth/register/', new_user)
-        console.log(request.data    )
         localStorage.removeItem('token')
         console.log(localStorage.getItem('token'))
         
@@ -54,23 +53,32 @@ class Register extends React.Component {
                 <form onSubmit={(event) => this.handleSubmit(event)}>
                     <br/>
                     <br/>
-                    <h3>Create New User:</h3>
-                    <label for="username">Username: </label>
-                    <input type="text" name="username" onChange={(event) => this.handleChange(event)} value={this.state.username}/><br></br>
-                    
-                    <label for="password">Password: </label>
-                    <input type="text" name="password" onChange={(event) => this.handleChange(event)} value={this.state.password}/><br></br>
-
-                    <label for="email">Email: </label>
-                    <input type="text" name="email" onChange={(event) => this.handleChange(event)} value={this.state.email}/><br></br>
-
-                    <label for="first_name">First Name: </label>
-                    <input type="text" name="first_name" onChange={(event) => this.handleChange(event)} value={this.state.first_name}/><br></br>
-
-                    <label for="last_name">Last Name: </label>
-                    <input type="text" name="last_name" onChange={(event) => this.handleChange(event)} value={this.state.last_name}/><br></br>
-
-                    <Button type="submit">Register!</Button>
+                    <h1 class="textCenter">Create New User:</h1>
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td><label class="text fs-2" for="username">Username: </label></td>
+                                <td><input class="inputField form-control-lg" type="text" name="username" onChange={(event) => this.handleChange(event)} value={this.state.username}/><br></br></td>
+                            </tr>
+                            <tr>
+                                <td><label class="text fs-2" for="password">Password: </label></td>
+                                <td><input class="inputField form-control-lg" type="text" name="password" onChange={(event) => this.handleChange(event)} value={this.state.password}/><br></br></td>
+                            </tr>
+                            <tr>
+                                <td><label class="text fs-2" for="email">Email: </label></td>
+                                <td><input class="inputField form-control-lg" type="text" name="email" onChange={(event) => this.handleChange(event)} value={this.state.email}/><br></br></td>
+                            </tr>
+                            <tr>
+                                <td><label class="text fs-2" for="first_name">First Name: </label></td>
+                                <td><input class="inputField form-control-lg" type="text" name="first_name" onChange={(event) => this.handleChange(event)} value={this.state.first_name}/><br></br></td>
+                            </tr>
+                            <tr>
+                                <td><label class="text fs-2" for="last_name">Last Name: </label></td>
+                                <td><input class="inputField form-control-lg" type="text" name="last_name" onChange={(event) => this.handleChange(event)} value={this.state.last_name}/><br></br></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <Button class="m-3 btn" type="submit"><span class="whiteText px-2 py-2 fs-3">Register!</span></Button>
                 </form>
                 <div>
                    <Footer/>

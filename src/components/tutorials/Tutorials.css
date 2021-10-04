@@ -1,0 +1,13 @@
+.textCenter{
+    color: rgb(87, 212, 129);
+    text-shadow: 2px 2px rgb(55, 77, 53);
+    font-size: 54;
+    text-align: center;
+}
+
+.text{
+    float: center;
+    color: rgb(87, 212, 129);
+    text-shadow: 2px 2px rgb(55, 77, 53);
+    text-align: justify;
+}
