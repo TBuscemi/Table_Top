@@ -46,7 +46,7 @@ class LoggedIn extends Component {
                     <Nav.Item><Nav.Link id="textLinks" href="/">Home </Nav.Link></Nav.Item>
                     <Nav.Item><Nav.Link id="textLinks" href="/account">Account</Nav.Link></Nav.Item>
                     <Nav.Item><Nav.Link id="textLinks" href="/chat">Chat</Nav.Link></Nav.Item>
-                    {/* <Nav.Item><Nav.Link id="textLinks" href="/chatReg"> REG Chat</Nav.Link></Nav.Item> */}
+                    <Nav.Item><Nav.Link id="textLinks" href="/chatReg"> Register For Chat</Nav.Link></Nav.Item>
                     <Nav.Item><Nav.Link  id="textLinks" href="/tutorials">Tutorials</Nav.Link></Nav.Item>
                     </Nav>
                 </Navbar>
