@@ -9,28 +9,48 @@ class AccountInfo extends Component {
     constructor(props) {
         super(props); 
         this.state ={
-            discord:this.props.discord,
-            campaign_length:this.props.campaign_length,
-            platform_played_on:this.props.platform_played_on,
-            game_systems_looking_for:this.props.game_systems_looking_for,
-            gm:this.props.gm,
-            player:this.props.player,
-            chat_name:this.props.chat_name,
-            looking_for_game:this.props.looking_for_game,
+            discord:"",
+            campaign_length:"",
+            platform_played_on:"",
+            game_systems_looking_for:"",
+            gm:"",
+            player:"",
+            chat_name:"",
+            looking_for_game:"",
+            user: 0,
         }
         this.handleSubmit = this.handleSubmit.bind(this);
     }
     
     componentDidMount(){
-        console.log(this.props.accountData.discord)
+        if(this.props.accountData.user != undefined){
+        this.setInitialState()}
     }
-    
+    componentDidUpdate(){
+        if(this.state.user === 0 ){
+            console.log("update")
+            this.setInitialState()
+        }
+    }
+
+    setInitialState(){
+        this.setState({
+            discord:this.props.accountData.discord,
+            campaign_length:this.props.accountData.campaign_length,
+            platform_played_on:this.props.accountData.platform_played_on,
+            game_systems_looking_for:this.props.accountData.game_systems_looking_for,
+            gm:this.props.accountData.gm,
+            player:this.props.accountData.player,
+            chat_name:this.props.accountData.chat_name,
+            looking_for_game:this.props.accountData.looking_for_game,
+            user:this.props.accountData.user
+        })
+    }
  
     handleSubmit(event){
         event.preventDefault();
         this.setState({
             discord:event.target.elements.discord.value,
-            campaign_length:event.target.elements.campaign_length.value,
             platform_played_on:event.target.elements.platform_played_on.value,
             game_systems_looking_for:event.target.elements.game_systems_looking_for.value,
             gm:event.target.elements.gm.value,
@@ -42,7 +62,7 @@ class AccountInfo extends Component {
         })
         let accountData ={
             discord:event.target.elements.discord.value,
-            campaign_length:event.target.elements.campaign_length.value,
+            campaign_length:this.state.campaign_length,
             platform_played_on:event.target.elements.platform_played_on.value,
             game_systems_looking_for:event.target.elements.game_systems_looking_for.value,
             gm:event.target.elements.gm.value,
@@ -71,9 +91,17 @@ class AccountInfo extends Component {
 
         axios.put ('http://127.0.0.1:8000/api/account/user/'+this.props.user+'/', updateUser)
         window.location.reload(false);
-
+        this.setState({
+            user: 0
+        })
     }
     
+    handleChange = (e)=>{
+        e.preventDefault()
+        this.setState({
+            [e.target.name]:e.target.value
+        });
+    }
     
     render(){
         return (
@@ -97,6 +125,14 @@ class AccountInfo extends Component {
                             </tr>
                             <tr>
                                 <td class="pt-3"><label class="text fs-2" for= "campaign_length">Campaign Length:</label></td>
+                            </tr>
+                            <tr>
+                                <select name ="campaign_length" onChange={this.handleChange}>
+                                    <option defaultValue={this.state.campaign_length}>{this.state.campaign_length}</option>
+                                    <option value="short_campaign">Short Campaign</option>
+                                    <option value="long_campaign">Long Campaign</option>
+                                    <option value="one_shot">One Shot</option>
+                                </select>
                             </tr>
                             <tr>
                                 <td><h6 class="textAccount">One Shot/Short Campaign/Long Campaign</h6></td>

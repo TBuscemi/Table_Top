@@ -6,12 +6,6 @@ import AccountInfo from './accountInfo/AccountInfo';
 import Footer from "../footer/Footer";
 import User from './user/user';
 
-
-
-
-
-
-
 class Account extends Component {
     constructor(props) {
         super(props);
@@ -26,19 +20,15 @@ class Account extends Component {
             player:"",
             looking_for_game:"",
             party_leaders:""
-
-    
           }     
     }
  
-
     componentDidMount(){
         this.getUserById() 
         console.log(this.props.user)
 
     }
    
-    
     async getUserById(){
         try{
             let response = await axios.get('http://127.0.0.1:8000/api/account/user/'+ this.props.user+'/')
@@ -64,7 +54,6 @@ class Account extends Component {
             }
             console.log(newUser)
             let request = axios.post('http://127.0.0.1:8000/api/account/user/', newUser)
-        
         }  
     }
 

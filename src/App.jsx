@@ -4,23 +4,17 @@ import jwtDecode from "jwt-decode"
 import Site from './components/navSites/Site';
 
 
-
-
-
 class App extends Component {
   constructor(props) {
       super(props);
       this.state = {
         user:[]
-
       }
   }
 
   componentWillMount() {
       this.getUserToken();
-      let user=[]
-      
-      
+      let user=[] 
   }
 
   getUserToken() {
