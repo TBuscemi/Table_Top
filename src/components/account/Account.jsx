@@ -19,7 +19,9 @@ class Account extends Component {
             gm:"",
             player:"",
             looking_for_game:"",
-            party_leaders:""
+            party_leaders:"",
+            rating: "",
+            lvl_of_rp: "",
           }     
     }
  
@@ -46,11 +48,13 @@ class Account extends Component {
                 campaign_length:"Short",
                 platform_played_on:"Roll20",
                 game_systems_looking_for:"D&D",
-                gm:"no",
+                gm:"No",
                 player:"Yes",
                 looking_for_game:"Yes",
                 chat_name:"Enter Chat Name",
-                party_leaders:"no"
+                party_leaders:"No",
+                rating: "E",
+                lvl_of_rp: "Balanced"
             }
             console.log(newUser)
             let request = axios.post('http://127.0.0.1:8000/api/account/user/', newUser)

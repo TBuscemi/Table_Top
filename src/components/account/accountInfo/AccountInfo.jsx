@@ -17,9 +17,10 @@ class AccountInfo extends Component {
             player:"",
             chat_name:"",
             looking_for_game:"",
+            rating: "",
+            lvl_of_rp:"",
             user: 0,
         }
-        this.handleSubmit = this.handleSubmit.bind(this);
     }
     
     componentDidMount(){
@@ -42,11 +43,13 @@ class AccountInfo extends Component {
             player:this.props.accountData.player,
             chat_name:this.props.accountData.chat_name,
             looking_for_game:this.props.accountData.looking_for_game,
+            rating: this.props.accountData.rating,
+            lvl_of_rp: this.props.accountData.lvl_of_rp,
             user:this.props.accountData.user
         })
     }
  
-    handleSubmit(event){
+    handleSubmit=(event)=>{
         event.preventDefault();
         let accountData ={
             chat_name: this.state.chat_name,
@@ -58,6 +61,8 @@ class AccountInfo extends Component {
             player:this.state.player,
             looking_for_game:this.state.looking_for_game,
             chat_name:this.state.chat_name,
+            rating:this.state.rating,
+            lvl_of_rp:this.state.lvl_of_rp,
         } 
         this.setUser(accountData) 
     }
@@ -75,6 +80,8 @@ class AccountInfo extends Component {
             gm:accountData.gm,
             looking_for_game:accountData.looking_for_game,
             chat_name:accountData.chat_name,
+            rating:accountData.rating,
+            lvl_of_rp:accountData.lvl_of_rp
         }
 
         axios.put ('http://127.0.0.1:8000/api/account/user/'+this.props.user+'/', updateUser)
@@ -84,7 +91,7 @@ class AccountInfo extends Component {
         })
     }
     
-    handleChange = (e)=>{
+    handleChange =(e)=>{
         e.preventDefault()
         this.setState({
             [e.target.name]:e.target.value
@@ -184,6 +191,32 @@ class AccountInfo extends Component {
                                     <option value="No">No</option>
                                 </select>
                             </tr>
+                            <tr>
+                                <td class="pt-3"><label class="text fs-2"  for= "rating">Maturity Level</label></td>
+                            </tr>
+                            <tr>
+                                <select name="rating" onChange={this.handleChange}>
+                                    <option defaultValue={this.state.rating}>{this.state.rating}</option>
+                                    <option value="E">E</option>
+                                    <option value="E10+">E10+</option>
+                                    <option value="T">T</option>
+                                    <option value="M">M</option>
+                                    <option value="A">A</option>
+                                </select>
+                            </tr>
+                            <tr>
+                                <td class="pt-3"><label class="text fs-2"  for= "rating">RP vs Combat</label></td>
+                            </tr>
+                            <tr>
+                                <select name="lvl_of_rp" onChange={this.handleChange}>
+                                    <option defaultValue={this.state.lvl_of_rp}>{this.state.lvl_of_rp}</option>
+                                    <option value="GIMME THE COMBAT">GIMME THE COMBAT</option>
+                                    <option value="Balanced">Balanced</option>
+                                    <option value="Talk All Day">Talk All Day</option>
+                                </select>
+                            </tr>
+
+                                
                             <tr>
                                 <td class="pt-3"><button class="m-3 btn" type="submit">Update</button></td>
                             </tr>
