@@ -10,15 +10,12 @@ class Site extends Component {
         this.state = {
             user:[],
             userId:[]
-  
         }
     }
- 
 
 
     renderSite(props){
         if(this.props.user.user_id === undefined){
-            console.log('notLoggedIn!')
             return (
                 <div id='nlDiv'>
                     <NotLoggedIn userId={this.state.userId} user={this.state.user} />
@@ -26,7 +23,6 @@ class Site extends Component {
             );
         }
         else{
-            console.log('LoggedIn');
             let userId= this.props.user.user_id
             return (
                 <div>

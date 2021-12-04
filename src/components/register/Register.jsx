@@ -62,11 +62,11 @@ class Register extends React.Component {
                             </tr>
                             <tr>
                                 <td><label class="text fs-2" for="password">Password: </label></td>
-                                <td><input class="inputField form-control-lg" type="text" name="password" onChange={(event) => this.handleChange(event)} value={this.state.password}/><br></br></td>
+                                <td><input class="inputField form-control-lg" type="password" name="password" onChange={(event) => this.handleChange(event)} value={this.state.password}/><br></br></td>
                             </tr>
                             <tr>
                                 <td><label class="text fs-2" for="email">Email: </label></td>
-                                <td><input class="inputField form-control-lg" type="text" name="email" onChange={(event) => this.handleChange(event)} value={this.state.email}/><br></br></td>
+                                <td><input class="inputField form-control-lg" type="email" name="email" onChange={(event) => this.handleChange(event)} value={this.state.email}/><br></br></td>
                             </tr>
                             <tr>
                                 <td><label class="text fs-2" for="first_name">First Name: </label></td>

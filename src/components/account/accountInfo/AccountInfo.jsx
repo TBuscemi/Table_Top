@@ -28,7 +28,6 @@ class AccountInfo extends Component {
     }
     componentDidUpdate(){
         if(this.state.user === 0 ){
-            console.log("update")
             this.setInitialState()
         }
     }

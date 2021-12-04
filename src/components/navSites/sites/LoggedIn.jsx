@@ -34,7 +34,15 @@ class LoggedIn extends Component {
     async getUserById(){
         let response = await axios.get('http://127.0.0.1:8000/api/account/user/'+ this.props.userId+'/')
         this.setState ({accountData : response.data})
-        }
+    }
+    logout =()=>{
+        localStorage.removeItem('token');
+        this.setState({
+            user:[],
+            userId:[],
+        });
+        window.location="/";
+    }
 
     render(){    
         return (
@@ -48,6 +56,7 @@ class LoggedIn extends Component {
                     <Nav.Item><Nav.Link id="textLinks" href="/chat">Chat</Nav.Link></Nav.Item>
                     <Nav.Item><Nav.Link id="textLinks" href="/chatReg"> Register For Chat</Nav.Link></Nav.Item>
                     <Nav.Item><Nav.Link  id="textLinks" href="/tutorials">Tutorials</Nav.Link></Nav.Item>
+                    <Nav.Item><Nav.Link id ="textLinks" onClick={this.logout} >Logout</Nav.Link></Nav.Item>
                     </Nav>
                 </Navbar>
                 <Switch>
