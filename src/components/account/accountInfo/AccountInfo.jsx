@@ -48,17 +48,17 @@ class AccountInfo extends Component {
     }
  
     handleSubmit(event){
-        debugger
         event.preventDefault();
         let accountData ={
-            discord:event.target.elements.discord.value,
+            chat_name: this.state.chat_name,
+            discord:this.state.discord,
             campaign_length:this.state.campaign_length,
             platform_played_on:this.state.platform_played_on,
             game_systems_looking_for:this.state.game_systems_looking_for,
-            gm:event.target.elements.gm.value,
-            player:event.target.elements.player.value,
-            looking_for_game:event.target.elements.looking_for_game.value,
-            chat_name:event.target.elements.chat_name.value,
+            gm:this.state.gm,
+            player:this.state.player,
+            looking_for_game:this.state.looking_for_game,
+            chat_name:this.state.chat_name,
         } 
         this.setUser(accountData) 
     }
@@ -87,7 +87,6 @@ class AccountInfo extends Component {
     
     handleChange = (e)=>{
         e.preventDefault()
-        debugger
         this.setState({
             [e.target.name]:e.target.value
         });
@@ -105,13 +104,13 @@ class AccountInfo extends Component {
                                 <td><label class="text fs-2" for= "chat_name">Chat Name:</label></td>
                             </tr>
                             <tr>
-                                <td><input class="inputField form-control-lg" type="text" name="chat_name" defaultValue={this.props.accountData.chat_name} /></td>
+                                <td><input class="inputField form-control-lg" type="text" name="chat_name" onChange={this.handleChange} value={this.state.chat_name} /></td>
                             </tr>
                             <tr>
                                 <td><label class="text fs-2" for= "discord">Discord:</label></td>
                             </tr>
                             <tr>
-                                <td><input class="inputField form-control-lg" type="text" name="discord" defaultValue={this.props.accountData.discord} /></td>
+                                <td><input class="inputField form-control-lg" type="text" name="discord" onChange={this.handleChange} value={this.state.discord} /></td>
                             </tr>
                             <tr>
                                 <td class="pt-3"><label class="text fs-2" for= "campaign_length">Campaign Length:</label></td>
@@ -177,16 +176,14 @@ class AccountInfo extends Component {
                                 </td>
                             </tr>
                             <tr>
-                                <td><input class="inputField form-control-lg" type="text" name="player"defaultValue={this.props.accountData.player} /> </td>
-                            </tr>
-                            <tr>
                                 <td class="pt-3"><label class="text fs-2"  for= "looking_for_game">Looking For A Game</label></td>
                             </tr>
                             <tr>
-                                <td><h6 class="textAccount">Yes/No</h6></td>
-                            </tr>
-                            <tr>
-                                <td><input class="inputField form-control-lg" type="text" name="looking_for_game"defaultValue={this.props.accountData.looking_for_game} />  </td>
+                                <select name="looking_for_game" onChange={this.handleChange}>
+                                    <option defaultValue={this.state.looking_for_game}>{this.state.looking_for_game}</option>
+                                    <option value="yes">Yes</option>
+                                    <option value="No">No</option>
+                                </select>
                             </tr>
                             <tr>
                                 <td class="pt-3"><button class="m-3 btn" type="submit">Update</button></td>
