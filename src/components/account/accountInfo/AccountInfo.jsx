@@ -48,28 +48,17 @@ class AccountInfo extends Component {
     }
  
     handleSubmit(event){
+        debugger
         event.preventDefault();
-        this.setState({
-            discord:event.target.elements.discord.value,
-            platform_played_on:event.target.elements.platform_played_on.value,
-            game_systems_looking_for:event.target.elements.game_systems_looking_for.value,
-            gm:event.target.elements.gm.value,
-            player:event.target.elements.player.value,
-            looking_for_game:event.target.elements.looking_for_game.value,
-            chat_name:event.target.elements.chat_name.value,
-
-     
-        })
         let accountData ={
             discord:event.target.elements.discord.value,
             campaign_length:this.state.campaign_length,
-            platform_played_on:event.target.elements.platform_played_on.value,
-            game_systems_looking_for:event.target.elements.game_systems_looking_for.value,
+            platform_played_on:this.state.platform_played_on,
+            game_systems_looking_for:this.state.game_systems_looking_for,
             gm:event.target.elements.gm.value,
             player:event.target.elements.player.value,
             looking_for_game:event.target.elements.looking_for_game.value,
             chat_name:event.target.elements.chat_name.value,
-
         } 
         this.setUser(accountData) 
     }
@@ -98,6 +87,7 @@ class AccountInfo extends Component {
     
     handleChange = (e)=>{
         e.preventDefault()
+        debugger
         this.setState({
             [e.target.name]:e.target.value
         });
@@ -129,49 +119,62 @@ class AccountInfo extends Component {
                             <tr>
                                 <select name ="campaign_length" onChange={this.handleChange}>
                                     <option defaultValue={this.state.campaign_length}>{this.state.campaign_length}</option>
-                                    <option value="short_campaign">Short Campaign</option>
-                                    <option value="long_campaign">Long Campaign</option>
-                                    <option value="one_shot">One Shot</option>
+                                    <option value="Short Campaign">Short Campaign</option>
+                                    <option value="Long Campaign">Long Campaign</option>
+                                    <option value="One Shot">One Shot</option>
                                 </select>
-                            </tr>
-                            <tr>
-                                <td><h6 class="textAccount">One Shot/Short Campaign/Long Campaign</h6></td>
-                            </tr>
-                            <tr>
-                                <td><input class="inputField form-control-lg" type="text" name="campaign_length" defaultValue={this.props.accountData.campaign_length} /></td>
                             </tr>
                             <tr>
                                 <td class="pt-3"><label class="text fs-2" for= "platform_played_on">What Platform Do you Play On</label></td>
                             </tr>
                             <tr>
-                                <td><h6 class="textAccount">Roll20/Fantasy Grounds</h6></td>
-                            </tr>
-                            <tr>
-                                <td><input class="inputField form-control-lg"  type="text" name="platform_played_on" defaultValue={this.props.accountData.platform_played_on} /></td>
+                                <td>
+                                    <select name = "platform_played_on" onChange={this.handleChange}>
+                                        <option defaultValue={this.state.platform_played_on}>{this.state.platform_played_on}</option>
+                                        <option value="Fantasy Grounds">Fantasy Grounds</option>
+                                        <option value="Roll20">Roll20</option>
+                                        <option value="foundry">Foundry</option>
+                                    </select>
+                                </td>
                             </tr>
                             <tr>
                                 <td class="pt-3"><label class="text fs-2"  for= "game_systems_looking_for">What Game System Are You Looking For</label></td>
                             </tr>
                             <tr>
-                                <td><h6 class="textAccount">Dungeon and Dragons/Pathfinder</h6></td>
-                            </tr>
-                            <tr>
-                                <td><input class="inputField form-control-lg" name="game_systems_looking_for"defaultValue={this.props.accountData.game_systems_looking_for} /></td>
+                                <td>
+                                    <select name="game_systems_looking_for" onChange={this.handleChange}>
+                                        <option defaultValue={this.state.game_systems_looking_for}>{this.state.game_systems_looking_for}</option>
+                                        <option value="D & D">D & D</option>
+                                        <option value="Pathfinder">Pathfinder</option>
+                                        <option value="Starfinder">Starfinder</option>
+                                        <option value="Star Wars">Star Wars</option>
+                                        <option value="Wrath and Glory">Wrath and Glory</option>
+                                    </select>
+                                </td>
                             </tr>
                             <tr>
                                 <td class="pt-3"><label class="text fs-2"  for= "gm">Are You A Game Master</label></td>
                             </tr>
                             <tr>
-                                <td><h6 class="textAccount">Yes/No</h6></td>
-                            </tr>
-                            <tr>
-                                <td><input class="inputField form-control-lg" type="text" name="gm"defaultValue={this.props.accountData.gm} /></td>
+                                <td>
+                                    <select name="gm" onChange={this.handleChange}>
+                                        <option defaultValue={this.state.gm}>{this.state.gm}</option>
+                                        <option value="yes">Yes</option>
+                                        <option value="No">No</option>
+                                    </select>
+                                </td>
                             </tr>
                             <tr>
                                 <td class="pt-3"><label class="text fs-2" for= "player">Are You A Player</label></td>
                             </tr>
                             <tr>
-                                <td><h6 class="textAccount">Yes/No</h6></td>
+                                <td>
+                                    <select name="player" onChange={this.handleChange}>
+                                        <option defaultValue={this.state.player}>{this.state.player}</option>
+                                        <option value="yes">Yes</option>
+                                        <option value="No">No</option>
+                                    </select>
+                                </td>
                             </tr>
                             <tr>
                                 <td><input class="inputField form-control-lg" type="text" name="player"defaultValue={this.props.accountData.player} /> </td>
