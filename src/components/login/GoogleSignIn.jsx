@@ -12,19 +12,33 @@ const GoogleSignIn = () => {
         signIn();
     }
 
+    const signOutGoogle =()=>{
+        firebase.auth().signOut()
+    }
+
+    const createNewUser=async(name, id )=>{
+        console.log( "New User: ", userName)
+        const docRef = await addDoc(collection(db, "Users"),{
+            name: name,
+            user: id,
+        });
+        
+        setUserName('')
+        setId('')
+        
+    }
+
     const signIn = async()=>{
+        setUserName('')
+        setId('')
         try{
             const {additionalUserInfo, user} = await auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
+            console.log(user.uid, user.displayName)
             if(additionalUserInfo.isNewUser){
+                console.log(id);
                 console.log(additionalUserInfo)
-                setUserName(user.name);
-                setId(user.id);
-                // await db.collection('Users').doc(`${user.uid}`).set(data);
-                const docRef = await addDoc(collection(db, "Users"),{
-                    name: userName,
-                    user_id: id
-                });
-                console.log( "Doc: ", docRef)
+                console.log(user)
+                createNewUser(user.displayName, user.uid);
             }
         }
         catch(err){
@@ -35,6 +49,7 @@ const GoogleSignIn = () => {
     return (
         <div>
             <button onClick={onClickGoogle}>Sign In With Google</button>
+            <button onClick={signOutGoogle}>Sign Out</button>
         </div>
     )
 }
