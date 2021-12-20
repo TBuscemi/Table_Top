@@ -58,7 +58,7 @@ class LoggedIn extends Component {
                     <Nav.Item><Nav.Link  id="textLinks" href="/tutorials">Tutorials</Nav.Link></Nav.Item>
                     <Nav.Item><Nav.Link id ="textLinks" onClick={this.logout} >Logout</Nav.Link></Nav.Item>
                     </Nav>
-                </Navbar>
+            </Navbar>
                 <Switch>
                 <Route path='/account'  render={props => <Account {...props} user={this.props.userId}/>} />
                     <Route path='/' exact component={Home}></Route>

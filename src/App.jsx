@@ -12,22 +12,6 @@ class App extends Component {
       }
   }
 
-  componentWillMount() {
-      this.getUserToken();
-      let user=[] 
-  }
-
-  getUserToken() {
-      let jwt = localStorage.getItem('token');
-      try{
-          const user = jwtDecode(jwt);
-          this.setState({user} )
-      } catch (err) {
-          console.log(err)
-      }
-  }
-  
-
   render(){
     return (
      
