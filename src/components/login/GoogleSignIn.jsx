@@ -32,13 +32,15 @@ const GoogleSignIn = () => {
         setUserName('')
         setId('')
         try{
-            const {additionalUserInfo, user} = await auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
-            console.log(user.uid, user.displayName)
-            if(additionalUserInfo.isNewUser){
+            const result = await auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
+            console.log(result.user.uid, result.user.displayName)
+            let token = result.credential.accessToken;
+            localStorage.setItem('token', token);
+            if(result.additionalUserInfo.isNewUser){
                 console.log(id);
-                console.log(additionalUserInfo)
-                console.log(user)
-                createNewUser(user.displayName, user.uid);
+                console.log(result.additionalUserInfo)
+                console.log(result.user)
+                createNewUser(result.user.displayName, result.user.uid);
             }
         }
         catch(err){
