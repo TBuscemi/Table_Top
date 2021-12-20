@@ -3,6 +3,7 @@ import axios from 'axios';
 import "./Login.css"
 import Footer from "../footer/Footer";
 import greenDice from './greenDice.png';
+import GoogleSignIn from './GoogleSignIn';
 
 
 
@@ -58,6 +59,7 @@ class Login extends React.Component {
         return (
             <div align="center" class="pt-5 mt-5">
                 <h1 class="textCenter">Login Below</h1> 
+                <GoogleSignIn />
                 <form onSubmit={this.handleSubmit}>
                     <label class="text fs-2" for="username">Username:</label>
                     <input class="inputField form-control-lg" type="text" name="username" onChange={this.handleChange} value={this.state.username}/><br></br>

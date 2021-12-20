@@ -1,5 +1,7 @@
 {
   "projects": {
-    "default": "bag-of-holding-30cd3"
-  }
+    "default": "bag-of-holding-30cd3",
+    "test": "bag-of-holding-30cd3"
+  },
+  "targets": {}
 }
