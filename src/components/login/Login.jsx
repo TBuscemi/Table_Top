@@ -5,9 +5,6 @@ import Footer from "../footer/Footer";
 import greenDice from './greenDice.png';
 import GoogleSignIn from './GoogleSignIn';
 
-
-
-
 class Login extends React.Component {
     constructor(props) {
         super(props);

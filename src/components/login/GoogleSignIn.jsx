@@ -1,7 +1,8 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import firebase from 'firebase/compat/app';
-import { addDoc, collection, getDocs } from "firebase/firestore";
+import { addDoc, collection, getDocs, setDoc, doc } from "firebase/firestore";
 import { auth, database, db } from '../misc/firebase'
+import { getAuth, onAuthStateChanged } from "firebase/auth"
 
 const GoogleSignIn = () => {
 
@@ -17,15 +18,20 @@ const GoogleSignIn = () => {
     }
 
     const createNewUser=async(name, id )=>{
-        console.log( "New User: ", userName)
-        const docRef = await addDoc(collection(db, "Users"),{
+        await setDoc(doc(db, "Users", id ),{
             name: name,
             user: id,
-        });
-        
+        })
         setUserName('')
-        setId('')
-        
+        setId('')   
+    }
+
+    const setToken=()=>{
+        firebase.auth().currentUser.getIdToken(true).then(function(token) {
+            localStorage.setItem('token', token);
+          }).catch(function(error) {
+            console.log(error)
+          });
     }
 
     const signIn = async()=>{
@@ -34,8 +40,10 @@ const GoogleSignIn = () => {
         try{
             const result = await auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
             console.log(result.user.uid, result.user.displayName)
-            let token = result.credential.accessToken;
-            localStorage.setItem('token', token);
+            // let token = result.credential.accessToken;
+            // let token = result.user.accessToken;
+            // localStorage.setItem('token', token);
+            setToken()
             if(result.additionalUserInfo.isNewUser){
                 console.log(id);
                 console.log(result.additionalUserInfo)

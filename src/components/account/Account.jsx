@@ -5,6 +5,7 @@ import "./Account.css"
 import AccountInfo from './accountInfo/AccountInfo';
 import Footer from "../footer/Footer";
 import User from './user/user';
+import FBAccount from '../account/FBAccount';
 
 class Account extends Component {
     constructor(props) {
@@ -64,6 +65,7 @@ class Account extends Component {
     render() {    
         return (
             <div>
+                <FBAccount />
                 <AccountInfo accountData = {this.state.accountData} user={this.props.user}/>
                 <User user={this.props.user}/>
                 <div>
