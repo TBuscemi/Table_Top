@@ -1,12 +1,6 @@
-import { Nav, Navbar, NavbarBrand} from 'react-bootstrap';
 import axios from 'axios';
 import { Component } from 'react';
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-}
-from "react-router-dom";
+import { Routes, Route,NavLink} from "react-router-dom";
 import Home from '../../home/Home';
 import Account from '../../account/Account';
 import './LoggedIn.css'
@@ -47,35 +41,28 @@ class LoggedIn extends Component {
     render(){    
         return (
             <div>
-            <Router>
-            <Navbar bg="black" variant="dark">
-                    <NavbarBrand id="title" href="">The Bag Of Holding</NavbarBrand>
-                    <Nav >
-                    <Nav.Item><Nav.Link id="textLinks" href="/">Home </Nav.Link></Nav.Item>
-                    <Nav.Item><Nav.Link id="textLinks" href="/account">Account</Nav.Link></Nav.Item>
-                    <Nav.Item><Nav.Link id="textLinks" href="/chat">Chat</Nav.Link></Nav.Item>
-                    <Nav.Item><Nav.Link id="textLinks" href="/chatReg"> Register For Chat</Nav.Link></Nav.Item>
-                    <Nav.Item><Nav.Link  id="textLinks" href="/tutorials">Tutorials</Nav.Link></Nav.Item>
-                    <Nav.Item><Nav.Link id ="textLinks" onClick={this.logout} >Logout</Nav.Link></Nav.Item>
-                    </Nav>
-            </Navbar>
-                <Switch>
-                <Route path='/account'  render={props => <Account {...props} user={this.props.userId}/>} />
-                    <Route path='/' exact component={Home}></Route>
-                    <Route path='/chat' exact component={Chat}></Route>
-                    <Route path='/chatReg' exact component={RegisterChat}></Route> 
+                <NavLink to="/" className="text-links">Home </NavLink>
+                <NavLink to="/account" className="text-links">Account</NavLink>
+                <NavLink to="/chat" className="text-links">Chat</NavLink>
+                <NavLink to="/chatReg" className="text-links"> Register For Chat</NavLink>
+                <NavLink to="/tutorials" className="text-links">Tutorials</NavLink>
+                <NavLink  onClick={this.logout}>Logout</NavLink>
+     
+                <Routes>
+                    <Route path='/account'  render={props => <Account {...props} user={this.props.userId}/>} />
+                    <Route path='/' element={Home}/>
+                    <Route path='/chat' element={Chat}/>
+                    <Route path='/chatReg' element={RegisterChat}/>
                     <Route render={props => {
                         if(this.state.accountData.party_leaders === "no"){
-                            return <Route path='/tutorials' exact component = {Tutorials}/>
+                            return <Route path='/tutorials' element= {Tutorials}/>
                         }
                         else{
                             console.log("party")
                             return <Route path='/tutorials' render={props => <TutorialsPartyLeader {...props} accountData={this.state.accountData}/> }/>
                         }
                     }}/>
-                </Switch>
-            </Router> 
-                
+                </Routes>           
             </div>
         )
     }

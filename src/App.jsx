@@ -1,6 +1,5 @@
 import './App.css';
 import React,{Component} from 'react';
-import jwtDecode from "jwt-decode"
 import Site from './components/navSites/Site';
 
 
