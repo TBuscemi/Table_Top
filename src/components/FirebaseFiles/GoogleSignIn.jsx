@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import firebase from 'firebase/compat/app';
 import { addDoc, collection, getDocs, setDoc, doc } from "firebase/firestore";
-import { auth, database, db } from '../misc/firebase'
+import { auth, database, db } from './misc/firebase'
 import { getAuth, onAuthStateChanged } from "firebase/auth"
 
 const GoogleSignIn = () => {

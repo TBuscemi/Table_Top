@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import firebase from 'firebase/compat/app';
 import { getAuth } from "firebase/auth"
 import { addDoc, collection, setDoc, doc, getDoc } from 'firebase/firestore';
-import { db } from '../misc/firebase';
+import { db } from './misc/firebase';
 
 const FBAccount = () => {
     

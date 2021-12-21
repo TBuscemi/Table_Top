@@ -5,7 +5,7 @@ import "./Account.css"
 import AccountInfo from './accountInfo/AccountInfo';
 import Footer from "../footer/Footer";
 import User from './user/user';
-import FBAccount from '../account/FBAccount';
+import FBAccount from '../FirebaseFiles/FBAccount';
 
 class Account extends Component {
     constructor(props) {

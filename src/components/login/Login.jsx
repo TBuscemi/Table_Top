@@ -3,7 +3,7 @@ import axios from 'axios';
 import "./Login.css"
 import Footer from "../footer/Footer";
 import greenDice from './greenDice.png';
-import GoogleSignIn from './GoogleSignIn';
+import GoogleSignIn from '../FirebaseFiles/GoogleSignIn';
 
 class Login extends React.Component {
     constructor(props) {
