@@ -5,8 +5,8 @@ import axios from 'axios';
 import Home from '../../home/Home';
 import Account from '../../account/Account';
 import '../Site';
-import Tutorials from '../../tutorials/Tutorials';
-import TutorialsPartyLeader from '../../tutorials/tutorialsPartyLeader/tutorialsPartyLeader';
+import Tutorials from '../../tutorials/reactPlayer/ReactPlayer';
+import TutorialsPartyLeader from '../../tutorials/reactPlayerAdmin/ReactPlayerAdmin';
 
 
 

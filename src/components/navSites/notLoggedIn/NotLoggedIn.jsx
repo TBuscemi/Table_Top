@@ -4,7 +4,7 @@ import Home from '../../home/Home';
 import Login from '../../login/Login';
 import Register from '../../register/Register';
 import { Component } from 'react';
-import Tutorials from '../../tutorials/Tutorials';
+import Tutorials from '../../tutorials/reactPlayer/ReactPlayer';
 
 
 class NotLoggedIn extends Component {

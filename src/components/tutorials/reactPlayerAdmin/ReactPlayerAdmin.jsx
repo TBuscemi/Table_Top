@@ -1,15 +1,15 @@
+import './style/ReactPlayerAdmin.css'
 import React from "react";
-import Footer from "../../footer/Footer";
-import ReactPlayer from "react-player";
 import axios from "axios";
-import './tutorialsPartyLeader.css'
+import ReactPlayer from "react-player";
+import Footer from "../../footer/Footer";
 import Button from 'react-bootstrap/button';
 
 
 
 
 
-class TutorialsPartyLeader extends React.Component {
+class ReactPlayerAdmin extends React.Component {
     constructor(props) {
         super(props);
         this.state={
@@ -138,12 +138,9 @@ class TutorialsPartyLeader extends React.Component {
                         </div>
                     </div>
 
-                </div>
-                <div>
-                </div>
-                <Footer/>
+                </div> 
             </div>
         )
     }
 }
-export default TutorialsPartyLeader
+export default ReactPlayerAdmin
