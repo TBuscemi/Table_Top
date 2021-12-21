@@ -1,15 +1,13 @@
-import axios from 'axios';
+import "./style/LoggedIn.css"
 import { Component } from 'react';
 import { Routes, Route,NavLink} from "react-router-dom";
+import axios from 'axios';
 import Home from '../../home/Home';
 import Account from '../../account/Account';
-import './LoggedIn.css'
-import Chat from '../../chat/Chat';
-import RegisterChat from '../../chat/registerChat/RegisterChat';
 import '../Site';
 import Tutorials from '../../tutorials/Tutorials';
 import TutorialsPartyLeader from '../../tutorials/tutorialsPartyLeader/tutorialsPartyLeader';
-import './LoggedIn.css'
+
 
 
 class LoggedIn extends Component {
@@ -43,16 +41,12 @@ class LoggedIn extends Component {
             <div>
                 <NavLink to="/" className="text-links">Home </NavLink>
                 <NavLink to="/account" className="text-links">Account</NavLink>
-                <NavLink to="/chat" className="text-links">Chat</NavLink>
-                <NavLink to="/chatReg" className="text-links"> Register For Chat</NavLink>
                 <NavLink to="/tutorials" className="text-links">Tutorials</NavLink>
                 <NavLink  onClick={this.logout}>Logout</NavLink>
      
                 <Routes>
                     <Route path='/account'  render={props => <Account {...props} user={this.props.userId}/>} />
                     <Route path='/' element={Home}/>
-                    <Route path='/chat' element={Chat}/>
-                    <Route path='/chatReg' element={RegisterChat}/>
                     <Route render={props => {
                         if(this.state.accountData.party_leaders === "no"){
                             return <Route path='/tutorials' element= {Tutorials}/>

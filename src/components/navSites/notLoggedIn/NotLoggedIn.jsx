@@ -1,8 +1,8 @@
-import { Routes, Route, Link,NavLink} from "react-router-dom";
+import './style/notLoggedin.css'
+import { Routes, Route,NavLink} from "react-router-dom";
 import Home from '../../home/Home';
 import Login from '../../login/Login';
 import Register from '../../register/Register';
-import './NotLoggedIn.css'
 import { Component } from 'react';
 import Tutorials from '../../tutorials/Tutorials';
 
@@ -21,7 +21,7 @@ class NotLoggedIn extends Component {
 
     render(){
         return (
-            <div>  
+            <div >  
                 <NavLink to="/">Home </NavLink>
                 <NavLink to="/login">Login</NavLink>
                 <NavLink to="/register">Register</NavLink>

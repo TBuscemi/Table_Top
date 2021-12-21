@@ -1,6 +1,6 @@
 import { Component } from 'react';
-import NotLoggedIn from './sites/NotLoggedIn';
-import LoggedIn from './sites/LoggedIn';
+import NotLoggedIn from './notLoggedIn/NotLoggedIn';
+import LoggedIn from './loggedIn/LoggedIn';
 
 
 
