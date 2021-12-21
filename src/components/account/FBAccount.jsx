@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import firebase from 'firebase/compat/app';
 import { getAuth } from "firebase/auth"
-import { addDoc, collection } from 'firebase/firestore';
+import { addDoc, collection, setDoc, doc, getDoc } from 'firebase/firestore';
 import { db } from '../misc/firebase';
 
 const FBAccount = () => {
@@ -17,11 +17,10 @@ const FBAccount = () => {
     });
 
     useEffect(() => {
-        // let token = localStorage.getItem('token')
-        // console.log("token:", token)
-        // let id = getAuth().currentUser.uid
-        // setUserId(id)
+        let token = localStorage.getItem('token')
+        console.log("token:", token)
     }, [])
+
 
 
     const onChange =(event)=>{
@@ -38,20 +37,32 @@ const FBAccount = () => {
             ...values,
             [event.target.name]:event.target.value,
         }))
-        makeNewBounty();
+        makeNewAccount();
     }
 
-    const makeNewBounty=async ()=>{
-        const newBounty = {
-            user_id : userId,
+    const getUserAccount =async(id, newAccount)=>{
+        const docRef = doc(db, "Accounts", id);
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists()){
+            setDoc(docRef, newAccount, {merge:true})
+        }
+        else{
+            await setDoc(doc(db, "Accounts", id), newAccount)
+        }
+    }
+
+    const makeNewAccount=async ()=>{
+        let id = getAuth().currentUser.uid
+        setUserId(id)
+        const newAccount = {
+            user_id : id,
             email: values.email,
             timeZone: values.timeZone,
             availbleDays01: values.availbleDays01,
             availbleDays02: values.availbleDays02,
             availbleDays03: values.availbleDays03
         }
-        const docRef = await addDoc(collection(db, 'Users').doc(`${userId}`).collection('Bounties'),
-        {newBounty});
+        getUserAccount(id, newAccount);
     }
 
     const hideShowOnClick=()=>{
@@ -66,7 +77,7 @@ const FBAccount = () => {
                     <input onChange={onChange} class="account-input " placeholder="E-Mail" name="email" value={values.email} type="text">
                         
                     </input>
-                    <input onChange={onChange} class="account-input " placeholder="Time Zone" name="timeZome" value={values.timeZone} type="text">
+                    <input onChange={onChange} class="account-input " placeholder="Time Zone" name="timeZone" value={values.timeZone} type="text">
 
                     </input>
                     <select onChange={onChange} class="account-input " name="availbleDays01" value={values.availbleDays01}>

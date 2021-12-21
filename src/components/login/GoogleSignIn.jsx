@@ -10,7 +10,7 @@ const GoogleSignIn = () => {
     const [id, setId]=useState('')
 
     const onClickGoogle=()=>{
-        signIn();
+        Login();
     }
 
     const signOutGoogle =()=>{
@@ -34,15 +34,12 @@ const GoogleSignIn = () => {
           });
     }
 
-    const signIn = async()=>{
+    const Login = async()=>{
         setUserName('')
         setId('')
         try{
             const result = await auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
             console.log(result.user.uid, result.user.displayName)
-            // let token = result.credential.accessToken;
-            // let token = result.user.accessToken;
-            // localStorage.setItem('token', token);
             setToken()
             if(result.additionalUserInfo.isNewUser){
                 console.log(id);
