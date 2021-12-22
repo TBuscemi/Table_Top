@@ -1,13 +1,9 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import firebase from 'firebase/compat/app';
-import { addDoc, collection, getDocs, setDoc, doc } from "firebase/firestore";
-import { auth, database, db } from './misc/firebase'
-import { getAuth, onAuthStateChanged } from "firebase/auth"
+import { setDoc, doc } from "firebase/firestore";
+import { auth, db } from './misc/firebase'
 
 const GoogleSignIn = () => {
-
-    const [userName, setUserName]=useState('');
-    const [id, setId]=useState('')
 
     const onClickGoogle=()=>{
         Login();
@@ -22,8 +18,6 @@ const GoogleSignIn = () => {
             name: name,
             user: id,
         })
-        setUserName('')
-        setId('')   
     }
 
     const setToken=()=>{
@@ -35,8 +29,6 @@ const GoogleSignIn = () => {
     }
 
     const Login = async()=>{
-        setUserName('')
-        setId('')
         try{
             const result = await auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
             console.log(result.user.uid, result.user.displayName)

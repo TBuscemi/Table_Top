@@ -17,8 +17,7 @@ const FBAccount = () => {
     });
 
     useEffect(() => {
-        let token = localStorage.getItem('token')
-        console.log("token:", token)
+        console.log()
     }, [])
 
 
@@ -74,12 +73,9 @@ const FBAccount = () => {
             <button onClick={hideShowOnClick}>Add Account Details</button>
             {addHideShow ? 
                 <form onSubmit={onSubmit}>
-                    <input onChange={onChange} class="account-input " placeholder="E-Mail" name="email" value={values.email} type="text">
-                        
-                    </input>
-                    <input onChange={onChange} class="account-input " placeholder="Time Zone" name="timeZone" value={values.timeZone} type="text">
-
-                    </input>
+                    <label className="account-label">Public Email</label>
+                    <input onChange={onChange} class="account-input " placeholder="E-Mail" name="email" value={values.email} type="text" />
+                    <input onChange={onChange} class="account-input " placeholder="Time Zone" name="timeZone" value={values.timeZone} type="text" />
                     <select onChange={onChange} class="account-input " name="availbleDays01" value={values.availbleDays01}>
                         <option>---</option>
                         <option>Monday</option>

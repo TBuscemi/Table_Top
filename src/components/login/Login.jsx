@@ -4,6 +4,7 @@ import "./Login.css"
 import Footer from "../footer/Footer";
 import greenDice from './greenDice.png';
 import GoogleSignIn from '../FirebaseFiles/GoogleSignIn';
+import FBLogin from '../FirebaseFiles/FBLogin'
 
 class Login extends React.Component {
     constructor(props) {
@@ -57,6 +58,7 @@ class Login extends React.Component {
             <div align="center" class="pt-5 mt-5">
                 <h1 class="textCenter">Login Below</h1> 
                 <GoogleSignIn />
+                <FBLogin />
                 <form onSubmit={this.handleSubmit}>
                     <label class="text fs-2" for="username">Username:</label>
                     <input class="inputField form-control-lg" type="text" name="username" onChange={this.handleChange} value={this.state.username}/><br></br>
