@@ -1,8 +1,9 @@
 import React, {useState, useEffect} from 'react'
 import firebase from 'firebase/compat/app';
 import { getAuth } from "firebase/auth"
-import { addDoc, collection, setDoc, doc, getDoc } from 'firebase/firestore';
+import { setDoc, doc, getDoc } from 'firebase/firestore';
 import { db } from './misc/firebase';
+import { useAuth } from './Context/FBContext'
 
 const FBAccount = () => {
     
@@ -15,9 +16,10 @@ const FBAccount = () => {
         availbleDays02: '',
         availbleDays03: '',
     });
+    const { currentUser }=useAuth()
 
     useEffect(() => {
-        console.log()
+        console.log("Account: ", currentUser)
     }, [])
 
 
@@ -70,6 +72,7 @@ const FBAccount = () => {
 
     return (
         <div>
+            {currentUser && <h1>Welcome {currentUser.displayName}</h1>}
             <button onClick={hideShowOnClick}>Add Account Details</button>
             {addHideShow ? 
                 <form onSubmit={onSubmit}>

@@ -1,7 +1,8 @@
 import React, {useRef, useState} from 'react'
-import { useAuth, setToken } from './Context/FBContext';
-import { addDoc, collection, getDocs, setDoc, doc } from "firebase/firestore";
-import {  db } from './misc/firebase'
+import { useAuth } from './Context/FBContext';
+import { setDoc, doc } from "firebase/firestore";
+import {  db, auth } from './misc/firebase'
+import { updateProfile } from 'firebase/auth';
 
 const FBRegister = () => {
 
@@ -25,8 +26,10 @@ const FBRegister = () => {
             let result = await signup(emailRef.current.value, passwordRef.current.value)
             let id = result.user.uid;
             let name = userName
+            updateProfile(auth.currentUser,{
+                displayName: name
+            })
             createNewUser(name, id)
-            setToken();
         }
         catch{
             setError("Failed to create an account.")

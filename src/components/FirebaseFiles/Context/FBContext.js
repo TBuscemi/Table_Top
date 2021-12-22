@@ -18,18 +18,16 @@ export const setToken=()=>{
 }
 
 export function AuthProvider ({children}){
-    const [currentUser, setCurrentUser]= useState(firebase.auth().currentUser);
+    const [currentUser, setCurrentUser]= useState();
     const [isLoading, setIsLoading]=useState(false);
     
-    useEffect(()=>{
-        // console.log(`User before unsub ${currentUser}`)
-        // const unsub = auth.onAuthStateChanged(user =>{
-        //     setCurrentUser(user)
-        //     setIsLoading(false)
-        // })
-        // return unsub
-        console.log(currentUser)
-    },[])
+    useEffect(() => {
+        const unsubscribe = auth.onAuthStateChanged(user => {
+          setCurrentUser(user)
+          setIsLoading(false)
+        })
+        return unsubscribe
+      }, [])
 
     function signup(email, password){
         return createUserWithEmailAndPassword(getAuth(), email, password)
@@ -68,7 +66,6 @@ export function AuthProvider ({children}){
         resetPassword,
         updatePassword,
         updateEmail,
-        setToken,
     }
 
     return(

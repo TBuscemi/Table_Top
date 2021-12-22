@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { useAuth } from './Context/FBContext';
+import { useAuth, setToken } from './Context/FBContext';
 import firebase from 'firebase/compat/app';
 import GoogleSignIn from './GoogleSignIn';
 
@@ -20,6 +20,7 @@ const FBLogin =()=>{
         try{
             setIsLoading(true)
             await login(emailRef.current.value, passwordRef.current.value)
+            setToken()
         }
         catch(err){
             setError('Failed to login')
