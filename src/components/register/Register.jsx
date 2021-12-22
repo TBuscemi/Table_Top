@@ -3,6 +3,7 @@ import React from 'react';
 import "./Register.css";
 import Button from 'react-bootstrap/button';
 import Footer from "../footer/Footer";
+import FBRegister from '../FirebaseFiles/FBRegister';
 
 
 
@@ -50,6 +51,7 @@ class Register extends React.Component {
     render() {
         return (
             <div className="register">
+                <FBRegister />
                 <form onSubmit={(event) => this.handleSubmit(event)}>
                     <br/>
                     <br/>

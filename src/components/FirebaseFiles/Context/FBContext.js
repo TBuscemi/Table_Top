@@ -1,59 +1,62 @@
 import React, {createContext, useContext, useState, useEffect} from 'react'
-import { getAuth } from "firebase/auth"
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut, GoogleAuthProvider, signInWithPopup, } from 'firebase/auth';
 import {auth} from '../misc/firebase'
+import firebase from 'firebase/compat/app';
 
-const AuthContext = () => ({
-    currentUser: null,
-    signInWithGoogle: ()=>Promise,
-    login: ()=>Promise,
-    signup: ()=>Promise,
-    logout: ()=>Promise,
-})
+const AuthContext = createContext()
 
 export function useAuth() {
-    return useContext(AuthContext)
+  return useContext(AuthContext)
 }
 
-export default function AuthProvider ({children}){
+export const setToken=()=>{
+    firebase.auth().currentUser.getIdToken(true).then(function(token) {
+        localStorage.setItem('token', token);
+      }).catch(function(error) {
+        console.log(error)
+      });
+}
+
+export function AuthProvider ({children}){
     const [currentUser, setCurrentUser]= useState(null);
     const [isLoading, setIsLoading]=useState(false);
-    const getAuth = getAuth();
     
     useEffect(()=>{
-        const unsub = auth.onAuthStateChanged(getAuth, user =>{
-            setCurrentUser(user ? user:null)
+        const unsub = auth.onAuthStateChanged(user =>{
+            setCurrentUser(user)
             setIsLoading(false)
+            console.log(user)
         })
-        return()=>{ unsub()}
+        return unsub
     },[])
 
-    const signup=(email, password)=>{
-        return auth.createUserWithEmailAndPassword(getAuth, email, password)
-    }
-
-    const login=(email, password)=>{
-        return auth.signInWithEmailAndPassword(getAuth, email, password)
-    }
-
-    const logout=()=>{
-        return auth.signOut(getAuth)
+    function signup(email, password){
+        return createUserWithEmailAndPassword(getAuth(), email, password)
     }
 
     const loginWithProvider=(provider)=>{
-        return auth.signInWithPopup(getAuth, provider)
+        return auth.signInWithPopup(provider)
     }
 
-    const resetPassword=(email)=>{
+    function login(email, password) {
+        return auth.signInWithEmailAndPassword(email, password)
+      }
+    
+      function logout() {
+        return auth.signOut()
+      }
+    
+      function resetPassword(email) {
         return auth.sendPasswordResetEmail(email)
-    }
-
-    const updatePassword=(password)=>{
-        return currentUser.updatePassword(password)
-    }
-
-    const updateEmail=(email)=>{
+      }
+    
+      function updateEmail(email) {
         return currentUser.updateEmail(email)
-    }
+      }
+    
+      function updatePassword(password) {
+        return currentUser.updatePassword(password)
+      }
 
     const value ={
         currentUser, 
@@ -64,6 +67,7 @@ export default function AuthProvider ({children}){
         resetPassword,
         updatePassword,
         updateEmail,
+        setToken,
     }
 
     return(

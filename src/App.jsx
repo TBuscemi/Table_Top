@@ -2,7 +2,7 @@ import './App.css';
 import React,{Component} from 'react';
 import jwtDecode from "jwt-decode"
 import Site from './components/navSites/Site';
-
+import { AuthProvider } from './components/FirebaseFiles/Context/FBContext';
 
 class App extends Component {
   constructor(props) {
@@ -30,10 +30,11 @@ class App extends Component {
 
   render(){
     return (
-     
-      <div>
-        <Site user={this.state.user}/>
-      </div>
+     <AuthProvider >
+        <div>
+          <Site user={this.state.user}/>
+        </div>
+      </AuthProvider>
     );
     }
 }

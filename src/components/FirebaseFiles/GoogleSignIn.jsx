@@ -42,9 +42,6 @@ const GoogleSignIn = () => {
             console.log(result.user.uid, result.user.displayName)
             setToken()
             if(result.additionalUserInfo.isNewUser){
-                console.log(id);
-                console.log(result.additionalUserInfo)
-                console.log(result.user)
                 createNewUser(result.user.displayName, result.user.uid);
             }
         }
