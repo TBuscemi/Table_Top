@@ -16,6 +16,7 @@ import '../Site';
 import Tutorials from '../../tutorials/Tutorials';
 import TutorialsPartyLeader from '../../tutorials/tutorialsPartyLeader/tutorialsPartyLeader';
 import './LoggedIn.css'
+import FBLogout from '../../FirebaseFiles/FBLogout';
 
 
 class LoggedIn extends Component {
@@ -47,6 +48,7 @@ class LoggedIn extends Component {
     render(){    
         return (
             <div>
+                <FBLogout />
             <Router>
             <Navbar bg="black" variant="dark">
                     <NavbarBrand id="title" href="">The Bag Of Holding</NavbarBrand>
